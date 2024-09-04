@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 git add .
 sudo nixos-rebuild switch --flake ./#default
+gen=$(nixos-rebuild list-generations | grep current)
+git commit -am"$gen"

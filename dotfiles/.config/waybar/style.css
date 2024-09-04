@@ -35,7 +35,6 @@
 @define-color mode	@black;
 @define-color unfocused	@bg2;
 @define-color focused	@braqua;
-@define-color inactive	@purple;
 @define-color sound	@brpurple;
 @define-color network	@purple;
 @define-color memory	@braqua;
@@ -45,6 +44,37 @@
 @define-color battery	@aqua;
 @define-color date	@black;
 @define-color time	@white;
+
+@define-color warning 	 @bryellow;
+@define-color critical	 @red;
+@define-color mode	     @black;
+@define-color unfocused  @black;
+@define-color focused	 @aqua;
+@define-color sound	     @black;
+@define-color network	 @black;
+@define-color memory	 @black;
+@define-color cpu	     @black;
+@define-color temp	     @black;
+@define-color layout	 @black;
+@define-color battery	 @black;
+@define-color date	     @black;
+@define-color time	     @black;
+@define-color tray	     @black;
+
+@define-color warning_text 	 @bryellow;
+@define-color critical_text	 @white;
+@define-color mode_text	     @white;
+@define-color focused_text	 @black;
+@define-color unfocused_text @gray;
+@define-color sound_text	 @aqua;
+@define-color network_text	 @aqua;
+@define-color memory_text	 @aqua;
+@define-color cpu_text	     @aqua;
+@define-color temp_text	     @aqua;
+@define-color layout_text	 @aqua;
+@define-color battery_text	 @aqua;
+@define-color date_text	     @aqua;
+@define-color time_text	     @aqua;
 
 /* Reset all styles */
 * {
@@ -63,7 +93,7 @@
 	background: rgba(40, 40, 40, 0.8784313725); /* #282828e0 */
 	color: @white;
 	font-family: JetBrains Mono, Siji;
-	font-size: 10pt;
+	font-size: 11pt;
 	/*font-weight: bold;*/
 }
 
@@ -91,7 +121,6 @@
 #mode,
 #memory.critical,
 #cpu.critical,
-#temperature.critical,
 #battery.critical.discharging {
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
@@ -104,7 +133,7 @@
 #network.disconnected,
 #memory.warning,
 #cpu.warning,
-#temperature.warning,
+#temperature.critical,
 #battery.warning.discharging {
 	color: @warning;
 }
@@ -120,34 +149,34 @@
 /* Workspaces stuff */
 #workspaces button {
 	/*font-weight: bold;*/
-	padding-left: 2pt;
-	padding-right: 2pt;
-	color: @white;
+	padding-left: 3pt;
+	padding-right: 3pt;
+	color: @unfocused_text;
 	background: @unfocused;
 }
 
 /* Inactive (on unfocused output) */
 #workspaces button.visible {
-	color: @white;
-	background: @inactive;
+	color: @focused_text;
+	background: @focused;
 }
 
 /* Active (on focused output) */
 #workspaces button.focused {
-	color: @black;
-	background: @focused;
+	color: @unfocused_text;
+	background: @unfocused;
 }
 
 /* Contains an urgent window */
 #workspaces button.urgent {
-	color: @black;
+	color: @warning_text;
 	background: @warning;
 }
 
 /* Style when cursor is on the button */
 #workspaces button:hover {
-	background: @black;
 	color: @white;
+	background: @black;
 }
 
 #window {
@@ -156,52 +185,58 @@
 }
 
 #pulseaudio {
+	color: @sound_text;
 	background: @sound;
-	color: @black;
 }
 
 #network {
+	color: @network_text;
 	background: @network;
-	color: @white;
 }
 
 #memory {
+	color: @memory_text;
 	background: @memory;
-	color: @black;
 }
 
 #cpu {
+	color: @cpu_text;
 	background: @cpu;
-	color: @white;
 }
 
 #temperature {
+	color: @temp_text;
 	background: @temp;
-	color: @black;
 }
 
 #language {
+	color: @language_text;
 	background: @layout;
-	color: @black;
 }
 
 #battery {
+	color: @battery_text;
 	background: @battery;
-	color: @white;
 }
 
 #tray {
-	background: @date;
+	background: @tray;
 }
 
 #clock.date {
+	color: @date_text;
 	background: @date;
-	color: @white;
 }
 
 #clock.time {
+	color: @time_text;
 	background: @time;
-	color: @black;
+}
+
+#custom-separator {
+	font-size: 11pt;
+	color: @time_text;
+	background: @time;
 }
 
 #custom-arrow1 {

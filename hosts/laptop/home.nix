@@ -9,21 +9,21 @@
 	# Home Manager is pretty good at managing dotfiles. The primary way to manage
 	# plain files is through 'home.file'.
 	home.file = {
-		".bashrc".source										= ./../../dotfiles/.bashrc;
-		".vimrc".source											= ./../../dotfiles/.vimrc;
-		".tmux.conf".source									= ./../../dotfiles/.tmux.conf;
-		".config/hypr/hyprland.conf".source = ./../../dotfiles/.config/hypr/hyprland.conf;
-		".config/waybar/config".source		 = ./../../dotfiles/.config/waybar/config;
-		".config/waybar/style.css".source  = ./../../dotfiles/.config/waybar/style.css;
-		".config/zathura/zathurarc".source	= ./../../dotfiles/.config/zathura/zathurarc;
+		".bashrc".source                            = ./../../dotfiles/.bashrc;
+		".vimrc".source                             = ./../../dotfiles/.vimrc;
+		".tmux.conf".source                         = ./../../dotfiles/.tmux.conf;
+		".config/hypr/hyprland.conf".source         = ./../../dotfiles/.config/hypr/hyprland.conf;
+		".config/waybar/config".source              = ./../../dotfiles/.config/waybar/config;
+		".config/waybar/toggle_sink.sh".source      = ./../../dotfiles/.config/waybar/toggle_sink.sh;
+		".config/waybar/style.css".source           = ./../../dotfiles/.config/waybar/style.css;
+		".config/zathura/zathurarc".source          = ./../../dotfiles/.config/zathura/zathurarc;
+		".config/gtk-3.0/gtk.css".source            = ./../../dotfiles/.config/gtk.css;
+		".config/kitty/curent-theme.conf".source    = ./../../dotfiles/.config/kitty/current-theme.conf;
+		".config/kitty/kitty.conf".source           = ./../../dotfiles/.config/kitty/kitty.conf;
 	};
 
 	# nvim
 	programs.neovim = 
-	let
-			toLua = str: "lua << EOF\n${str}\nEOF\n";
-			toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
-	in
 	{
 		enable = true;																																										 
 		viAlias = true;																																										 
@@ -66,7 +66,8 @@
 				]));
 				type = "lua";
 				config = "${builtins.readFile ./../../dotfiles/.config/nvim/treesitter.lua}";
-      }
+			}
+
 			{
 				plugin = gruvbox-nvim;
 				config = "colorscheme gruvbox";
@@ -82,6 +83,20 @@
 	home.sessionVariables = {
 		EDITOR = "nvim";
 	};
+
+    # theme
+	qt.enable = true;
+	qt.platformTheme.name = "gtk";
+	qt.style.name = "adwaita-dark";
+	qt.style.package = pkgs.adwaita-qt;
+
+
+	gtk.enable = true;
+	gtk.cursorTheme.package = pkgs.bibata-cursors;
+	gtk.cursorTheme.name = "Bibata-Original-Classic";
+
+	gtk.theme.package = pkgs.adw-gtk3;
+	gtk.theme.name = "adw-gtk3";
 
 	# This value determines the Home Manager release that your configuration is
 	# compatible with. This helps avoid breakage when a new Home Manager release

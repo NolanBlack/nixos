@@ -7,11 +7,9 @@
 # TODO
 git manage nixos
 home-manager dotfiles 
-    vim
-    bash/zsh
+    theming
     hyprland
     waybar
-    theming
     login screen
 paraview
 petsc

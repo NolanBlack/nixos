@@ -65,8 +65,6 @@
     # '';
     # xsession.initExtra = "xset r rate 250 60";
 
-    
-
     # Enable CUPS to print documents.
     services.printing.enable = true;
 
@@ -118,6 +116,7 @@
         #xdg-desktop-portal-hyprland
         wdisplays
         xwayland
+        pulseaudioFull
         waybar
         (pkgs.waybar.overrideAttrs (oldAttrs: {
                         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
@@ -131,7 +130,8 @@
         dolphin # file manager
         ripgrep # grep tool
         xclip # clipboard access 
-        flameshot # screen shots
+        grimblast # screen shots
+        htop # sys monitor
 
         spotify
         zathura
