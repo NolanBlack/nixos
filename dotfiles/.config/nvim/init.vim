@@ -24,12 +24,12 @@ set termguicolors
 "        set term=xterm-256color
 "        set term=rxvt-unicode-256color
 "endif
-if exists("$TMUX")
-                "set t_Co=256
-                set notermguicolors
-else
-                set termguicolors
-endif
+"if exists("$TMUX")
+"                "set t_Co=256
+"                set notermguicolors
+"else
+"                set termguicolors
+"endif
 
 
 set exrc
