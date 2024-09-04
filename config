@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+git add .
+if ! [ -x "$(command -v home-manager)" ]; then
+    nix run home-manager switch
+fi
+home-manager switch --flake .#default

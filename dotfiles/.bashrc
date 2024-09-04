@@ -1,6 +1,7 @@
-
 bind 'set bell-style none'
-alias v='vim'
+
+alias v='nvim'
+alias ls='ls -a --color --group-directories-first'
 alias gs='git status'
 alias ga='git add'
 alias gc='git commit'

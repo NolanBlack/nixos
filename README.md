@@ -1,18 +1,8 @@
-
-rebuild with flake
-```
-sudo nixos-rebuild switch --flake ./#default
-```
-
-build dotfiles
-```
-sudo nixos-rebuild test --fast --flake ./#default
-```
-
-update flake
-```
-nix flake update
-```
+# usage
+- `rebuild` to rebuild system
+- `test` to test system rebuild without creating entry
+- `config` to run home-manager update
+- `nix flake update` to update flakes
 
 # TODO
 git manage nixos
@@ -25,8 +15,8 @@ home-manager dotfiles
     login screen
 paraview
 petsc
-my projects
-cisco
+cisco + remote tmux
 tmux
+hpfea
 latex + zathura
 

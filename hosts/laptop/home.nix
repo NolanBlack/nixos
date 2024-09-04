@@ -1,40 +1,97 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = "nolan";
-  home.homeDirectory = "/home/nolan";
+	# Home Manager needs a bit of information about you and the paths it should
+	# manage.
+	home.username = "nolan";
+	home.homeDirectory = "/home/nolan";
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+	# Home Manager is pretty good at managing dotfiles. The primary way to manage
+	# plain files is through 'home.file'.
+	home.file = {
+		".bashrc".source										= ./../../dotfiles/.bashrc;
+		".vimrc".source											= ./../../dotfiles/.vimrc;
+		".tmux.conf".source									= ./../../dotfiles/.tmux.conf;
+		".config/hypr/hyprland.conf".source = ./../../dotfiles/.config/hypr/hyprland.conf;
+		".config/waybar/config".source		 = ./../../dotfiles/.config/waybar/config;
+		".config/waybar/style.css".source  = ./../../dotfiles/.config/waybar/style.css;
+		".config/zathura/zathurarc".source	= ./../../dotfiles/.config/zathura/zathurarc;
+	};
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = [
-  ];
+	# nvim
+	programs.neovim = 
+	let
+			toLua = str: "lua << EOF\n${str}\nEOF\n";
+			toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
+	in
+	{
+		enable = true;																																										 
+		viAlias = true;																																										 
+		vimAlias = true;																																									 
+		defaultEditor = true;  
+		extraConfig = lib.fileContents ./../../dotfiles/.config/nvim/init.vim;
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    ".bashrc".source                    = ./../../dotfiles/.bashrc;
-    ".vimrc".source                     = ./../../dotfiles/.vimrc;
-    ".tmux.conf".source                 = ./../../dotfiles/.tmux.conf;
-    ".config/hypr/hyprland.conf".source = ./../../dotfiles/.config/hypr/hyprland.conf;
-    ".config/waybar/config".source     = ./../../dotfiles/.config/waybar/config;
-    ".config/waybar/style.css".source  = ./../../dotfiles/.config/waybar/style.css;
-  };
+		extraPackages = with pkgs; [
+			xclip
+		];
 
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
+		plugins = with pkgs.vimPlugins; [
+			{
+				plugin = nvim-tree-lua;
+				type = "lua";
+				config = "${builtins.readFile ./../../dotfiles/.config/nvim/nvim-tree.lua}";
+			}
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+			YouCompleteMe
+
+			{
+				plugin = telescope-nvim;
+				type = "lua";
+				config = "${builtins.readFile ./../../dotfiles/.config/nvim/telescope.lua}";
+			}
+			telescope-fzf-native-nvim
+
+			{
+				plugin = (nvim-treesitter.withPlugins (p: [
+					p.tree-sitter-nix
+          			p.tree-sitter-vim
+          			p.tree-sitter-bash
+          			p.tree-sitter-lua
+          			p.tree-sitter-python
+          			p.tree-sitter-json
+          			p.tree-sitter-c
+          			p.tree-sitter-cpp
+          			p.tree-sitter-markdown
+          			p.tree-sitter-latex
+				]));
+				type = "lua";
+				config = "${builtins.readFile ./../../dotfiles/.config/nvim/treesitter.lua}";
+      }
+			{
+				plugin = gruvbox-nvim;
+				config = "colorscheme gruvbox";
+			}
+		];
+
+	};
+	# The home.packages option allows you to install Nix packages into your
+	# environment.
+	home.packages = [
+	];
+
+	home.sessionVariables = {
+		EDITOR = "nvim";
+	};
+
+	# This value determines the Home Manager release that your configuration is
+	# compatible with. This helps avoid breakage when a new Home Manager release
+	# introduces backwards incompatible changes.
+	#
+	# You should not change this value, even if you update Home Manager. If you do
+	# want to update the value, then make sure to first check the Home Manager
+	# release notes.
+	home.stateVersion = "24.05"; # Please read the comment before changing.
+
+	# Let Home Manager install and manage itself.
+	programs.home-manager.enable = true;
 }
