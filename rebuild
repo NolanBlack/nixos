@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
+flakename="default"
+if ! [ -z "$1" ]; then
+    flakename=$1
+fi
 git add .
-sudo nixos-rebuild switch --flake ./#default
+sudo nixos-rebuild switch --flake ./#${flakename}
 gen=$(nixos-rebuild list-generations | grep current)
 git commit -am"$gen"

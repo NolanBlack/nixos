@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
+flakename="default"
+if ! [ -z "$1" ]; then
+    flakename=$1
+fi
 git add .
 if ! [ -x "$(command -v home-manager)" ]; then
     nix run home-manager switch
 fi
-home-manager switch --flake .#default
+home-manager switch --flake .#${flakename}
