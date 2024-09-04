@@ -48,7 +48,7 @@
 
     # Enable the GNOME Desktop Environment.
     services.xserver.displayManager.gdm.enable = true;
-    services.xserver.desktopManager.gnome.enable = false;
+    services.xserver.desktopManager.gnome.enable = true;
 
     # Configure keymap in X11
     services.xserver.autoRepeatDelay = 250;
@@ -127,7 +127,7 @@
         swww # wallpapers
         kitty # term
         rofi-wayland # app launcher
-        dolphin # file manager
+        pcmanfm # file manager
         ripgrep # grep tool
         xclip # clipboard access 
         grimblast # screen shots

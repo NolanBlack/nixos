@@ -85,7 +85,7 @@
 	};
 
     # theme
-	qt.enable = true;
+	qt.enable = false;
 	qt.platformTheme.name = "gtk";
 	qt.style.name = "adwaita-dark";
 	qt.style.package = pkgs.adwaita-qt;
@@ -97,6 +97,9 @@
 
 	gtk.theme.package = pkgs.adw-gtk3;
 	gtk.theme.name = "adw-gtk3";
+    
+    gtk.iconTheme.package =  pkgs.gnome.adwaita-icon-theme;
+    gtk.iconTheme.name = "Adwaita-dark";
 
 	# This value determines the Home Manager release that your configuration is
 	# compatible with. This helps avoid breakage when a new Home Manager release
