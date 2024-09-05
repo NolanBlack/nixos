@@ -5,6 +5,8 @@
 - `nix flake update` to update flakes
 
 # TODO
+hyprland move silent
+
 petsc
 hpfea
 latex + zathura

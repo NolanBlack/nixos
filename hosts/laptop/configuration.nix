@@ -5,6 +5,9 @@
 { config, pkgs, inputs, ... }:
 
 {
+    ############################################################################
+    # MINIMAL
+    ############################################################################
     imports =
         [ # Include the results of the hardware scan.
             ./hardware-configuration.nix
@@ -15,6 +18,7 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
+    # Networking
     networking.hostName = "nixos"; # Define your hostname.
     # networking.wireless.enable = true;    # Enables wireless support via wpa_supplicant.
 
@@ -25,6 +29,7 @@
     # Enable networking
     networking.networkmanager.enable = true;
 
+    # System
     # Set your time zone.
     time.timeZone = "America/Denver";
 
@@ -46,10 +51,6 @@
     # Enable the X11 windowing system.
     services.xserver.enable = true;
 
-    # Enable the GNOME Desktop Environment.
-    services.xserver.displayManager.gdm.enable = true;
-    services.xserver.desktopManager.gnome.enable = false;
-
     # Configure keymap in X11
     services.xserver.autoRepeatDelay = 250;
     services.xserver.autoRepeatInterval = 60;
@@ -59,11 +60,6 @@
         options = "caps:swapescape";
     };
     console.useXkbConfig = true;
-
-    # services.xserver.displayManager.sessionCommands = ''
-    #           ${pkgs.xorg.xset}/bin/xset r rate 250 60
-    # '';
-    # xsession.initExtra = "xset r rate 250 60";
 
     # Enable CUPS to print documents.
     services.printing.enable = true;
@@ -87,6 +83,55 @@
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;
 
+    # Install firefox.
+    programs.firefox.enable = true;
+
+    # Allow unfree packages
+    nixpkgs.config.allowUnfree = true;
+
+    # setup flakes
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+    ############################################################################
+    # DESKTOPS
+    ############################################################################
+
+    # Enable the GNOME Desktop Environment.
+    services.xserver.displayManager.gdm.enable = true;
+    services.xserver.desktopManager.gnome.enable = false;
+
+    # # hyprland
+    # services.xserver.videosDrivers = ["nvidia"];
+    # desktop portal
+    #xdg.portal.enable = true;
+    #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    #xdg.portal.xdgOpenUsePortal = true;
+
+    services.xserver.displayManager.gdm.wayland = true;
+    programs.hyprland = {
+        enable = true;
+        # set the flake package
+        package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+        # make sure to also set the portal package, so that they are in sync
+        portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    };
+
+    environment.sessionVariables = {
+        # If your cursor becomes invisible
+        WLR_NO_HARDWARE_CURSORS = "1";
+        # Hint electron apps to use wayland
+        NIXOS_OZONE_WL = "1";
+    };
+    
+    hardware = {
+        graphics.enable = true;
+        # Most wayland compositors need this
+        nvidia.modesetting.enable = true;
+    };
+
+    ############################################################################
+    # USER SETUP
+    ############################################################################
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.nolan = {
         isNormalUser = true;
@@ -96,12 +141,6 @@
         #  thunderbird
         ];
     };
-
-    # Install firefox.
-    programs.firefox.enable = true;
-
-    # Allow unfree packages
-    nixpkgs.config.allowUnfree = true;
 
     # List packages installed in system profile. To search, run:
     # $ nix search wget
@@ -152,40 +191,6 @@
         defaultEditor = true;
     };
 
-
-    # # hyprland
-    # services.xserver.videosDrivers = ["nvidia"];
-    # desktop portal
-    #xdg.portal.enable = true;
-    #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    #xdg.portal.xdgOpenUsePortal = true;
-
-    services.xserver.displayManager.gdm.wayland = true;
-    programs.hyprland = {
-        enable = true;
-        # set the flake package
-        package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-        # make sure to also set the portal package, so that they are in sync
-        portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-    };
-
-    environment.sessionVariables = {
-        # If your cursor becomes invisible
-        WLR_NO_HARDWARE_CURSORS = "1";
-        # Hint electron apps to use wayland
-        NIXOS_OZONE_WL = "1";
-    };
-    
-    hardware = {
-        graphics.enable = true;
-        # Most wayland compositors need this
-        nvidia.modesetting.enable = true;
-    };
-
-
-
-    # setup flakes
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
     # fonts
     fonts.packages = with pkgs; [

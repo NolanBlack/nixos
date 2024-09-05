@@ -163,7 +163,7 @@
 		],
 		"tooltip": false,
         // for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
-        "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon8/temp1_input"
+        "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon7/temp1_input"
         //"hwmon-path": "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon6/temp1_input"
 	},
 
