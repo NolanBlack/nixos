@@ -32,14 +32,15 @@
 		"interval": 10,
 		"states": {
 			"warning": 30,
-			"critical": 15
+			"critical": 15,
+            "full": 95
 		},
 		"format-time": "{H}:{M:02}",
 		//"format": "{icon} {capacity}% ({time})",
 		"format": "{icon} {capacity}%",
-		"format-charging": " {capacity}% ({time})",
+		"format-charging": " {capacity}%",
 		"format-charging-full": " {capacity}%",
-		"format-full": "{icon} {capacity}%",
+		"format-full": "{icon}",
 		"format-alt": "{icon} {power}W",
 		"format-icons": [
 			"",
@@ -59,7 +60,7 @@
 	},
 
 	"clock#date": {
-        "min-length": 10,
+        "min-length": 8,
 		"interval": 20,
 		//"format": "{:%e %b %Y}",
 		"format": "{:%a %b %d}",
@@ -68,10 +69,10 @@
 	},
 
 	"cpu": {
-        "min-length": 5,
-		"interval": 5,
+        "min-length": 3,
+		"interval": 2,
 		"tooltip": false,
-		"format": "CPU {usage}%",
+		"format": "CPU  {usage}%",
 		"format-alt": " {load}",
 		"states": {
 			"warning": 70,
@@ -152,7 +153,7 @@
 
 	"temperature": {
 		"critical-threshold": 95,
-		"interval": 5,
+		"interval": 2,
 		"format": "{temperatureC}°C",
 		"format-icons": [
 			"",

@@ -85,20 +85,21 @@
 	};
 
     # theme
-	qt.enable = false;
+	qt.enable = true;
 	qt.platformTheme.name = "gtk";
-	qt.style.name = "adwaita-dark";
+    qt.style.name = "adwaita-dark";
 	qt.style.package = pkgs.adwaita-qt;
 
 
 	gtk.enable = true;
 	gtk.cursorTheme.package = pkgs.bibata-cursors;
-	gtk.cursorTheme.name = "Bibata-Original-Classic";
+    #gtk.cursorTheme.name = "Bibata-Original-Classic";
+    gtk.cursorTheme.name = "Bibata-Original-Winter";
 
 	gtk.theme.package = pkgs.adw-gtk3;
 	gtk.theme.name = "adw-gtk3";
     
-    gtk.iconTheme.package =  pkgs.gnome.adwaita-icon-theme;
+    gtk.iconTheme.package =  pkgs.adwaita-icon-theme;
     gtk.iconTheme.name = "Adwaita-dark";
 
 	# This value determines the Home Manager release that your configuration is
