@@ -166,7 +166,8 @@
         rofi-wayland # app launcher
         pcmanfm # file manager
         ripgrep # grep tool
-        xclip # clipboard access 
+        xclip # clipboard access (x)
+        wl-clipboard # clipboard access (wayland)
         grimblast # screen shots
         htop # sys monitor
 

@@ -53,7 +53,7 @@
 	},
 
 	"clock#time": {
-        "min-length": 5,
+        "min-length": 10,
 		"interval": 10,
 		"format": "{:%I:%M %p}",
 		"tooltip": false
@@ -64,20 +64,42 @@
 		"interval": 20,
 		//"format": "{:%e %b %Y}",
 		"format": "{:%a %b %d}",
-		"tooltip": false
-		//"tooltip-format": "{:%e %B %Y}"
+		//"tooltip": false,
+		//"tooltip-format": "{:%e %B %Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : -1,
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#fabd2f'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click": "mode",
+                    "on-click-right": "mode",
+                    "on-scroll-up": "tz_up",
+                    "on-scroll-down": "tz_down",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                    }
 	},
 
 	"cpu": {
         "min-length": 3,
 		"interval": 2,
-		"tooltip": false,
 		"format": "CPU  {usage}%",
 		"format-alt": " {load}",
 		"states": {
 			"warning": 70,
 			"critical": 90
-		}
+		},
+        "on-click-right": "kitty -e sh -c htop",
 	},
 
 	"sway/language": {
@@ -89,14 +111,15 @@
 
 	"memory": {
         "min-length": 5,
-		"interval": 5,
-		//"format": " {used:0.1f}G/{total:0.1f}G",
+		"interval": 3,
 		//"format": " {}%",
 		"format": "MEM {}%",
+		"format-alt": " {used:0.1f}G/{total:0.1f}G",
 		"states": {
 			"warning": 70,
 			"critical": 90
 		},
+        "on-click-right": "kitty -e sh -c htop",
 		"tooltip": false
 	},
 
@@ -132,8 +155,8 @@
 
 	"pulseaudio": {
         "min-length": 5,
-		"format": "{icon} {volume}%",
-		"format-bluetooth": "{icon} {volume}%",
+		"format": "{icon} {volume}",
+		"format-bluetooth": "{icon} {volume}",
 		"format-muted": " -- ",
 		"format-icons": {
 			"headphone": "",
@@ -147,7 +170,7 @@
 		"scroll-step": 1,
 		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "bash $HOME/.config/waybar/toggle_sink.sh",
-		"tooltip": false
+		"tooltip": true,
 	},
 
 	"temperature": {
@@ -162,9 +185,12 @@
 			""
 		],
 		"tooltip": false,
+        "thermal-zone": 0,
         // for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
-        "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon7/temp1_input"
-        //"hwmon-path": "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon6/temp1_input"
+        //"hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon7/temp1_input",
+        //"hwmon-path": "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon6/temp1_input",
+        "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/hwmon", 
+        "input-filename": "temp1_input",
 	},
 
 	"tray": {

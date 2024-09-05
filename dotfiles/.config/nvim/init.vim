@@ -91,9 +91,12 @@ nnoremap x "_x
 nnoremap <leader>d "_d
 nnoremap <leader>D "_D
 vnoremap <leader>d "_d
-map <leader>y "yy <Bar> :call system('xclip', @y)<CR>
-nnoremap <leader>p :r!xclip -out -selection primary<CR><CR>
-nnoremap <leader>v :r!xclip -out -selection clipboard<CR><CR>
+"map <leader>y "yy <Bar> :call system('xclip', @y)<CR>
+"nnoremap <leader>p :r!xclip -out -selection primary<CR><CR>
+"nnoremap <leader>v :r!xclip -out -selection clipboard<CR><CR>
+map <leader>y "yy <Bar> :call system('wl-copy -p', @y)<CR>
+nnoremap <leader>p :r!wl-paste -p<CR><CR>
+nnoremap <leader>v :r!wl-paste<CR><CR>
 
 
 "Tab movement

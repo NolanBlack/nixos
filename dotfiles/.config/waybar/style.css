@@ -236,8 +236,8 @@
 
 #custom-separator {
 	font-size: 11pt;
-	color: @time_text;
-	background: @time;
+	color: @layout_text;
+	background: @layout;
 }
 
 #custom-arrow1 {

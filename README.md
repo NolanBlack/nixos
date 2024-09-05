@@ -5,7 +5,8 @@
 - `nix flake update` to update flakes
 
 # TODO
-hyprland move silent
+hyprland
+    move silent
 
 petsc
 hpfea
