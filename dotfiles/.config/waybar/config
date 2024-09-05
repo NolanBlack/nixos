@@ -101,7 +101,6 @@
 	},
 
 	"network": {
-        "min-length": 1,
 		"interval": 5,
 		//"format-wifi": " {essid} ({signalStrength}%)",
 		"format-wifi": "",
@@ -110,7 +109,7 @@
 		"format-alt": " {ipaddr}/{cidr}",
         "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
         "tooltip-format-wifi": "{ifname}: {ipaddr}/{cidr}, {essid} ({signalStrength}%)",
-        "on-click": "kitty -e sh -c nmtui"
+        "on-click-right": "kitty -e sh -c nmtui"
 	},
 
 	"sway/mode": {
