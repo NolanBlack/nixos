@@ -111,9 +111,6 @@
         xorg.xmodmap
         xorg.xkbcomp
         xorg.xset
-        #hyprland
-        #xdg-desktop-portal-gtk
-        #xdg-desktop-portal-hyprland
         wdisplays
         xwayland
         pulseaudioFull
@@ -122,6 +119,7 @@
                         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
                     })
         )
+        openconnect # vpn
         dunst # notfications
         libnotify # for dunst
         swww # wallpapers
