@@ -19,10 +19,10 @@
         "custom/separator",
 		"pulseaudio",
         "custom/separator",
+		"network",
+        "custom/separator",
 		"clock#date",
 		"clock#time",
-        "custom/separator",
-		"network",
 		"tray"
 	],
 
@@ -101,7 +101,7 @@
 	},
 
 	"network": {
-        "min-length": 5,
+        "min-length": 1,
 		"interval": 5,
 		//"format-wifi": " {essid} ({signalStrength}%)",
 		"format-wifi": "",
