@@ -46,6 +46,10 @@
     # Enable the X11 windowing system.
     services.xserver.enable = true;
 
+    # Enable the GNOME Desktop Environment.
+    services.xserver.displayManager.gdm.enable = true;
+    services.xserver.desktopManager.gnome.enable = false;
+
     # Configure keymap in X11
     services.xserver.autoRepeatDelay = 250;
     services.xserver.autoRepeatInterval = 60;
@@ -56,9 +60,13 @@
     };
     console.useXkbConfig = true;
 
+    # services.xserver.displayManager.sessionCommands = ''
+    #           ${pkgs.xorg.xset}/bin/xset r rate 250 60
+    # '';
+    # xsession.initExtra = "xset r rate 250 60";
+
     # Enable CUPS to print documents.
     services.printing.enable = true;
-
 
     # Enable sound with pipewire.
     hardware.pulseaudio.enable = false;
@@ -79,47 +87,13 @@
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;
 
-    # Enable the GNOME Desktop Environment.
-    services.xserver.displayManager.gdm.enable = true;
-    services.xserver.desktopManager.gnome.enable = true;
-
-    # Enable hyprland
-    # services.xserver.videosDrivers = ["nvidia"];
-    # desktop portal
-    #xdg.portal.enable = true;
-    #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    #xdg.portal.xdgOpenUsePortal = true;
-
-    services.xserver.displayManager.gdm.wayland = true;
-    programs.hyprland = {
-        enable = true;
-        # set the flake package
-        package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-        # make sure to also set the portal package, so that they are in sync
-        portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-    };
-
-    environment.sessionVariables = {
-        # If your cursor becomes invisible
-        WLR_NO_HARDWARE_CURSORS = "1";
-        # Hint electron apps to use wayland
-        NIXOS_OZONE_WL = "1";
-    };
-    
-    hardware = {
-        graphics.enable = true;
-        # Most wayland compositors need this
-        nvidia.modesetting.enable = true;
-        opengl.enable = true;
-    };
-
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.nolan = {
         isNormalUser = true;
         description = "nolan";
         extraGroups = [ "networkmanager" "wheel" ];
         packages = with pkgs; [
-            #  thunderbird
+        #  thunderbird
         ];
     };
 
@@ -179,6 +153,34 @@
     };
 
 
+    # # hyprland
+    # services.xserver.videosDrivers = ["nvidia"];
+    # desktop portal
+    #xdg.portal.enable = true;
+    #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    #xdg.portal.xdgOpenUsePortal = true;
+
+    services.xserver.displayManager.gdm.wayland = true;
+    programs.hyprland = {
+        enable = true;
+        # set the flake package
+        package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+        # make sure to also set the portal package, so that they are in sync
+        portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    };
+
+    environment.sessionVariables = {
+        # If your cursor becomes invisible
+        WLR_NO_HARDWARE_CURSORS = "1";
+        # Hint electron apps to use wayland
+        NIXOS_OZONE_WL = "1";
+    };
+    
+    hardware = {
+        graphics.enable = true;
+        # Most wayland compositors need this
+        nvidia.modesetting.enable = true;
+    };
 
 
 
