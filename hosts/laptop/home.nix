@@ -93,14 +93,15 @@
 
 	gtk.enable = true;
 	gtk.cursorTheme.package = pkgs.bibata-cursors;
-    #gtk.cursorTheme.name = "Bibata-Original-Classic";
-    gtk.cursorTheme.name = "Bibata-Original-Winter";
+    gtk.cursorTheme.name = "Bibata-Original-Classic";
+    # gtk.cursorTheme.name = "Bibata-Original-Winter";
 
 	gtk.theme.package = pkgs.adw-gtk3;
 	gtk.theme.name = "adw-gtk3";
     
     gtk.iconTheme.package =  pkgs.adwaita-icon-theme;
     gtk.iconTheme.name = "Adwaita-dark";
+
 
 	# This value determines the Home Manager release that your configuration is
 	# compatible with. This helps avoid breakage when a new Home Manager release
