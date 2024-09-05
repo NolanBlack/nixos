@@ -49,7 +49,7 @@
 @define-color critical	 @red;
 @define-color mode	     @black;
 @define-color unfocused  @black;
-@define-color focused	 @aqua;
+@define-color focused	 @bg2;
 @define-color sound	     @black;
 @define-color network	 @black;
 @define-color memory	 @black;
@@ -64,7 +64,7 @@
 @define-color warning_text 	 @bryellow;
 @define-color critical_text	 @white;
 @define-color mode_text	     @white;
-@define-color focused_text	 @black;
+@define-color focused_text	 @bryellow;
 @define-color unfocused_text @gray;
 @define-color sound_text	 @aqua;
 @define-color network_text	 @aqua;
