@@ -6,7 +6,6 @@
 
 # TODO
 petsc
-cisco + remote tmux
 hpfea
 latex + zathura
 

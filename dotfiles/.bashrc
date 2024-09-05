@@ -8,6 +8,9 @@ alias gc='git commit'
 alias gp='git push'
 alias a='fc -s ; history -d -1'
 
+alias drexelvpn='sudo openconnect --protocol=anyconnect --authgroup=DrexelVPN --user=njb89 vpn.drexel.edu'
+# sometimes ssh may fail if server doesn't recognize kitty
+# infocmp -a xterm-kitty | ssh myserver tic -x -o \~/.terminfo /dev/stdin
 alias mcmb01='ssh -L 8080:localhost:11111 njb89@drexel.edu@mcmb-compute01.mem.drexel.edu'
 alias mcmb02='ssh -L 8080:localhost:11111 njb89@drexel.edu@mcmb-compute02.mem.drexel.edu'
 alias mcmb03='ssh -L 8080:localhost:11111 njb89@drexel.edu@mcmb-compute03.urcf.drexel.edu'
