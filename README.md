@@ -21,9 +21,6 @@
 permanently removes OS generations older than 7d
 
 # TODO
-hyprland
-    move silent
-
 petsc
 hpfea
 latex + zathura

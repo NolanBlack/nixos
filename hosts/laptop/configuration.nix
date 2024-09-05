@@ -171,9 +171,10 @@
         grimblast # screen shots
         htop # sys monitor
 
-        spotify
-        zathura
-        okular
+        spotify # music
+        zathura # pdf (minimal)
+        okular  # pdf
+        ghostwriter # markdown
 
         # programming
         cmake
