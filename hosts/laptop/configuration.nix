@@ -177,9 +177,11 @@
     };
     
     hardware = {
-            graphics.enable = true;
-            # Most wayland compositors need this
-            nvidia.modesetting.enable = true;
+        graphics.enable = true;
+        # Most wayland compositors need this
+        nvidia.modesetting.enable = true;
+
+        opengl.enable = true;
     };
 
 
