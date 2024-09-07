@@ -53,14 +53,12 @@
 	},
 
 	"clock#time": {
-        "min-length": 10,
 		"interval": 10,
 		"format": "{:%I:%M %p}",
 		"tooltip": false
 	},
 
 	"clock#date": {
-        "min-length": 8,
 		"interval": 20,
 		//"format": "{:%e %b %Y}",
 		"format": "{:%a %b %d}",

@@ -171,6 +171,7 @@
         grimblast # screen shots
         htop # sys monitor
 
+        libreoffice # office docs
         spotify # music
         zathura # pdf (minimal)
         okular  # pdf
