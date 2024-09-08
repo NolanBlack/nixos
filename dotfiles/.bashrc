@@ -24,3 +24,11 @@ timeit() {
     { /usr/bin/time -f'\nCommand "%C" on %P CPU\n\tElapsed \t\t%E\n\tMax resident set size \t%M KB\n' $@ ; } 2>&1 | grep -E --color=always '^|Command|Max resident set size|Elapsed|Elapsed (wall clock)'
 }
 
+unset rc                                                                                          
+ORANGE='\[\033[0;32m\]'                                                                           
+PS_CLEAR='\[\033[0m\]'                                                                            
+export PS1="${ORANGE}[\u@\h \w]${PS_CLEAR}\n ${ORANGE}/\W $ ${PS_CLEAR}"
+if [[ -n "$IN_NIX_SHELL" ]]; then
+    export PS1="${ORANGE}(nix-shell) $PS1"
+fi
+
