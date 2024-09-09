@@ -3,6 +3,7 @@ flakename="default"
 if ! [ -z "$1" ]; then
     flakename=$1
 fi
+echo "updating configuration ${flakename}"
 git add .
 if ! [ -x "$(command -v home-manager)" ]; then
     nix run home-manager switch

@@ -18,6 +18,7 @@ alias mcmb04='ssh -L 8080:localhost:11111 njb89@drexel.edu@mcmb-compute04.urcf.d
 
 export PETSC_DIR='/home/nolan/petsc'
 export PETSC_ARCH='arch-linux-c-opt'
+alias mpiexec='${PETSC_DIR}/${PETSC_ARCH}/bin/mpiexec'
 
 zz() {
     zathura $1 &

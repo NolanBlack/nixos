@@ -3,7 +3,10 @@ flakename="default"
 if ! [ -z "$1" ]; then
     flakename=$1
 fi
+echo "updating flake ${flakename}"
 git add .
 sudo nixos-rebuild switch --flake ./#${flakename}
 gen=$(nixos-rebuild list-generations | grep current)
 git commit -am"$gen"
+echo "running configure ${flakename}"
+source configure ${flakename}

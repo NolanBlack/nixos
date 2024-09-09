@@ -3,5 +3,6 @@ flakename="default"
 if ! [ -z "$1" ]; then
     flakename=$1
 fi
+echo "testing flake ${flakename}"
 git add .
 sudo nixos-rebuild test --fast --flake ./#${flakename}
