@@ -176,10 +176,13 @@
         zathura # pdf (minimal)
         okular  # pdf
         ghostwriter # markdown
+        tmux # terminal multiplex
 
         # programming
+        libgcc
+        gnumake
         cmake
-        tmux
+        python3
 
         # sci ml
         petsc
