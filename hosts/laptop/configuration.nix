@@ -186,8 +186,10 @@
 
         # sci ml
         petsc
+        eigen
         paraview
-        texliveTeTeX
+        libtorch-bin
+        texliveFull
     ];
     # neovim
     programs.neovim = {

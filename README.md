@@ -19,8 +19,3 @@
 
 - `nix-collect-garbage --delet-older-than 7d` deletes unused store objects AND 
 permanently removes OS generations older than 7d
-
-# TODO
-petsc
-hpfea
-latex + zathura
