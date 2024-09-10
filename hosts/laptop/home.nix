@@ -59,19 +59,38 @@
           			p.tree-sitter-lua
           			p.tree-sitter-python
           			p.tree-sitter-json
-          			p.tree-sitter-c
-          			p.tree-sitter-cpp
+                    p.tree-sitter-c
+                    p.tree-sitter-cpp
           			p.tree-sitter-markdown
           			p.tree-sitter-latex
 				]));
 				type = "lua";
 				config = "${builtins.readFile ./../../dotfiles/.config/nvim/treesitter.lua}";
 			}
+                # nvim-treesitter-parsers.cpp
 
-			{
-				plugin = gruvbox-nvim;
-				config = "colorscheme gruvbox";
-			}
+            lush-nvim # required for zenbones
+            { 
+                plugin = zenbones-nvim;
+                    # type = "lua";
+                    # config = "${builtins.readFile ./../../dotfiles/.config/nvim/zenbones.lua}";
+            }
+
+            {
+            	plugin = gruvbox-nvim;
+                type = "lua";
+                config = "${builtins.readFile ./../../dotfiles/.config/nvim/gruvbox.lua}";
+            }
+            # {
+            # 	plugin = kanagawa-nvim;
+            # 	type = "lua";
+            # 	config = "${builtins.readFile ./../../dotfiles/.config/nvim/kanagawa.lua}";
+            # }
+            # {
+            # 	plugin = gruvbox-material-nvim;
+            # 	type = "lua";
+            # 	config = "${builtins.readFile ./../../dotfiles/.config/nvim/gruvbox-material.lua}";
+            # }
 		];
 
 	};

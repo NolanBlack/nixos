@@ -105,6 +105,11 @@ nnoremap H gT
 noremap <S-Left>    :-tabmove<CR>
 noremap <S-Right> :+tabmove<CR>
 
+"Text alignment on equals
+noremap <leader>a  :! column -t -s= -o=<CR>
+
+"Text alignment on input char
+command! -range -nargs=1 Align execute <line1>.",".<line2> . "! column -t -s<args> -o<args>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Quickfix
@@ -131,13 +136,25 @@ endfunction
 " Use map <buffer> to only map dd in the quickfix window. Requires +localmap
 autocmd FileType qf map <buffer> dd :RemoveQFItem<cr>
 
-"Text alignment on equals
-noremap <leader>a  :! column -t -s= -o=<CR>
+function!   QuickFixOpenAll()
+    if empty(getqflist())
+        return
+    endif
+    let s:prev_val = ""
+    for d in getqflist()
+        let s:curr_val = bufname(d.bufnr)
+        if (s:curr_val != s:prev_val)
+            exec "tabedit " . s:curr_val
+        endif
+        let s:prev_val = s:curr_val
+    endfor
+endfunction
+:command! QuickFixOpenAll :call QuickFixOpenAll()
+map <C-a> :QuickFixOpenAll<CR>
 
-"Text alignment on input char
-command! -range -nargs=1 Align execute <line1>.",".<line2> . "! column -t -s<args> -o<args>"
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Window commands
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
@@ -148,7 +165,9 @@ nnoremap <silent> <leader>- :vertical resize -5<CR>
 
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Latex helpers
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup WrapLineInTeXFile
         autocmd!
         autocmd FileType tex setlocal wrap linebreak
