@@ -177,6 +177,7 @@
         okular  # pdf
         ghostwriter # markdown
         tmux # terminal multiplex
+        zoom-us # video conference
 
         # programming
         libgcc

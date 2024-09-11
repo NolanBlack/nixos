@@ -20,6 +20,8 @@
 		".config/gtk-3.0/gtk.css".source            = ./../../dotfiles/.config/gtk.css;
 		".config/kitty/curent-theme.conf".source    = ./../../dotfiles/.config/kitty/current-theme.conf;
 		".config/kitty/kitty.conf".source           = ./../../dotfiles/.config/kitty/kitty.conf;
+		".config/nvim/after/syntax/c.vim".source    = ./../../dotfiles/.config/nvim/syntax/c.vim;
+		".config/nvim/colors/gruvbones.lua".source   = ./../../dotfiles/.config/nvim/colors/gruvbones.lua;
 	};
 
 	# nvim
@@ -51,6 +53,7 @@
 			}
 			telescope-fzf-native-nvim
 
+            # load treesitter and its syntax highlighting rules
 			{
 				plugin = (nvim-treesitter.withPlugins (p: [
 					p.tree-sitter-nix
@@ -59,38 +62,39 @@
           			p.tree-sitter-lua
           			p.tree-sitter-python
           			p.tree-sitter-json
-                    p.tree-sitter-c
-                    p.tree-sitter-cpp
+                        #p.tree-sitter-c
+                        #p.tree-sitter-cpp
           			p.tree-sitter-markdown
           			p.tree-sitter-latex
 				]));
 				type = "lua";
 				config = "${builtins.readFile ./../../dotfiles/.config/nvim/treesitter.lua}";
 			}
-                # nvim-treesitter-parsers.cpp
+            nvim-treesitter-parsers.cpp
 
+
+            # multiple colorschemes (the last one will be default)
+            {
+            	plugin = kanagawa-nvim;
+            	type = "lua";
+            	config = "${builtins.readFile ./../../dotfiles/.config/nvim/kanagawa.lua}";
+            }
+            {
+            	plugin = gruvbox-material-nvim;
+            	type = "lua";
+            	config = "${builtins.readFile ./../../dotfiles/.config/nvim/gruvbox-material.lua}";
+            }
             lush-nvim # required for zenbones
             { 
                 plugin = zenbones-nvim;
-                    # type = "lua";
-                    # config = "${builtins.readFile ./../../dotfiles/.config/nvim/zenbones.lua}";
+                type = "lua";
+                config = "${builtins.readFile ./../../dotfiles/.config/nvim/zenbones.lua}";
             }
-
             {
             	plugin = gruvbox-nvim;
                 type = "lua";
                 config = "${builtins.readFile ./../../dotfiles/.config/nvim/gruvbox.lua}";
             }
-            # {
-            # 	plugin = kanagawa-nvim;
-            # 	type = "lua";
-            # 	config = "${builtins.readFile ./../../dotfiles/.config/nvim/kanagawa.lua}";
-            # }
-            # {
-            # 	plugin = gruvbox-material-nvim;
-            # 	type = "lua";
-            # 	config = "${builtins.readFile ./../../dotfiles/.config/nvim/gruvbox-material.lua}";
-            # }
 		];
 
 	};
