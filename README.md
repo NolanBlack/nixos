@@ -19,3 +19,12 @@
 
 - `nix-collect-garbage --delet-older-than 7d` deletes unused store objects AND 
 permanently removes OS generations older than 7d
+
+## fresh install
+On a fresh install of nixos,
+- don't forget to copy the hardware configuration in `/etc/nixos/hardware-configuration.nix`
+- add  `nix.settings.experimental-features = [ "nix-command" "flakes" ];` to `/etc/nixos/configuration.nix`,
+then run `sudo nixos-rebuild switch` from the `/etc/nixos/` directory
+- run `nix run home-manager init` to init home manager
+
+Then you may navigate back to this directory and use the provided scripts.
