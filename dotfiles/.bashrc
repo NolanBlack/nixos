@@ -16,7 +16,7 @@ alias mcmb02='ssh -L 8080:localhost:11111 njb89@drexel.edu@mcmb-compute02.mem.dr
 alias mcmb03='ssh -L 8080:localhost:11111 njb89@drexel.edu@mcmb-compute03.urcf.drexel.edu'
 alias mcmb04='ssh -L 8080:localhost:11111 njb89@drexel.edu@mcmb-compute04.urcf.drexel.edu'
 
-export PETSC_DIR='/home/nolan/petsc'
+export PETSC_DIR='/home/nolan/Packages/petsc'
 export PETSC_ARCH='arch-linux-c-opt'
 alias mpiexec='${PETSC_DIR}/${PETSC_ARCH}/bin/mpiexec'
 

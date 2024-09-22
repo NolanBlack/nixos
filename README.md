@@ -11,7 +11,7 @@
     do NOT automatically revert to the configuration corresponding to that OS version
         - to revert these files, checkout the commit corresponding to the specified OS build
 
-- `config [flakename=defualt]` to run home-manager update
+- `configure [flakename=defualt]` to run home-manager update
 
 - `nix flake update` to update flakes
 
