@@ -1,28 +1,48 @@
-# usage
-- `rebuild [flakename=default]` to rebuild system
-    - create a new OS image for the bootloader
-    - save/commit all files (does not push)
-    - use this when you want to rebuild, save, and switch to a new record of the system
+# Usage
 
-- `test [flakename=defualt]` to test system rebuild without creating entry
-    - switch to the specified OS image for the life of this session
-    - use this when you want to rebuild, save files, but NOT create a new record of the system
-    - if you reload into an older OS version after testing, these configuration files
-    do NOT automatically revert to the configuration corresponding to that OS version
-        - to revert these files, checkout the commit corresponding to the specified OS build
+ ### will rebuild the system ###
+```sh
+./rebuild [flakename=default]
+```
+- create a new OS image for the bootloader
+- save/commit all files (does not push)
+- use this when you want to rebuild, save, and switch to a new record of the system
 
-- `configure [flakename=defualt]` to run home-manager update
+### test system rebuild without creating entry ###
+```sh
+./test [flakename=defualt]
+```
+- switch to the specified OS image for the life of this session
+- use this when you want to rebuild, save files, but NOT create a new record of the system
+- if you reload into an older OS version after testing, these configuration files
+do NOT automatically revert to the configuration corresponding to that OS version
+    - to revert these files, checkout the commit corresponding to the specified OS build
 
-- `nix flake update` to update flakes
+### to run home-manager update (update the doftiles). ###
+```sh
+./configure [flakename=defualt]
+```
 
-- `nix-collect-garbage` deletes unused store objects
+### update the flake record ###
+```sh
+nix flake update
+```
 
-- `nix-collect-garbage --delet-older-than 7d` deletes unused store objects AND 
+### delete unused store objects ###
+```sh
+nix-collect-garbage
+```
+
+```sh
+nix-collect-garbage --delete-older-than 7d
+```
+- deletes unused store objects AND 
 permanently removes OS generations older than 7d
 
 ## fresh install
 On a fresh install of nixos,
 - don't forget to copy the hardware configuration in `/etc/nixos/hardware-configuration.nix`
+to the appropriate location in this directory.
 - add  `nix.settings.experimental-features = [ "nix-command" "flakes" ];` to `/etc/nixos/configuration.nix`,
 then run `sudo nixos-rebuild switch` from the `/etc/nixos/` directory
 - run `nix run home-manager init` to init home manager
