@@ -12,13 +12,13 @@
 	"modules-right": [
 		"cpu",
 		"temperature",
-        "custom/separator",
+        /* "custom/separator", */
 		"memory",
         "custom/separator",
 		"pulseaudio",
-        "custom/separator",
+        /* "custom/separator", */
 		"network",
-        "custom/separator",
+        /* "custom/separator", */
 		"battery",
         "custom/separator",
 		"clock#date",
@@ -89,7 +89,7 @@
 	},
 
 	"cpu": {
-        "min-length": 3,
+        "min-length": 2,
 		"interval": 2,
 		"format": "CPU  {usage}%",
 		"format-alt": " {load}",
@@ -108,7 +108,7 @@
 	},
 
 	"memory": {
-        "min-length": 5,
+        "min-length": 0,
 		"interval": 3,
 		//"format": " {}%",
 		"format": "MEM {}%",
@@ -122,7 +122,7 @@
 	},
 
 	"network": {
-		"interval": 5,
+		"interval": 3,
 		//"format-wifi": " {essid} ({signalStrength}%)",
 		"format-wifi": "",
 		"format-ethernet": " {ifname}",
@@ -152,7 +152,7 @@
 	},
 
 	"pulseaudio": {
-        "min-length": 5,
+        "min-length": 3,
 		"format": "{icon} {volume}",
 		"format-bluetooth": "{icon} {volume}",
 		"format-muted": " -- ",

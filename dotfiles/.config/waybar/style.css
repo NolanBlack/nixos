@@ -12,6 +12,7 @@
 
 /* Colors (gruvbox) */
 @define-color black	#282828;
+/* @define-color black	rgba(40, 40, 40, 0.7); */
 @define-color red	#cc241d;
 @define-color green	#98971a;
 @define-color yellow	#d79921;
@@ -81,7 +82,7 @@
 	border: none;
 	border-radius: 0;
 	min-height: 0;
-	margin: 0.2;
+	margin: 0.05;
 	padding: 0;
 	box-shadow: none;
 	text-shadow: none;
@@ -188,11 +189,13 @@
 #pulseaudio {
 	color: @sound_text;
 	background: @sound;
+	font-size: 8pt;
 }
 
 #network {
 	color: @network_text;
 	background: @network;
+	font-size: 8pt;
 }
 
 #memory {
@@ -218,6 +221,7 @@
 #battery {
 	color: @battery_text;
 	background: @battery;
+	font-size: 8pt;
 }
 
 #tray {

@@ -164,11 +164,12 @@
         swww # wallpapers
         kitty # term
         rofi-wayland # app launcher
+        rofi-power-menu # power menu
         pcmanfm # file manager
         ripgrep # grep tool
         xclip # clipboard access (x)
         wl-clipboard # clipboard access (wayland)
-        grimblast # screen shots
+        gscreenshot # screen shots
         htop # sys monitor
 
         libreoffice # office docs
