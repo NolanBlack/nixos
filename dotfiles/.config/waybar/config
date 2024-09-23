@@ -9,6 +9,11 @@
 		//"sway/window"
 	],
 
+	"modules-center": [
+		"clock#date",
+		"clock#time",
+	],
+
 	"modules-right": [
 		"cpu",
 		"temperature",
@@ -20,9 +25,7 @@
 		"network",
         /* "custom/separator", */
 		"battery",
-        "custom/separator",
-		"clock#date",
-		"clock#time",
+		"custom/power",
 		"tray"
 	],
 
@@ -68,7 +71,7 @@
         "calendar": {
                     "mode"          : "year",
                     "mode-mon-col"  : 3,
-                    "weeks-pos"     : "right",
+                    "weeks-pos"     : "", /* "left", "right", "" */
                     "on-scroll"     : -1,
                     "format": {
                               "months":     "<span color='#ffead3'><b>{}</b></span>",
@@ -190,6 +193,12 @@
         "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/hwmon", 
         "input-filename": "temp1_input",
 	},
+	"custom/power": {
+		"format": " ⏻  ",
+        /* "on-click": "kitty -e sh -c rofi -show power-menu -modi power-menu:rofi-power-menu", */
+        "on-click": "rofi -show power-menu -modi power-menu:rofi-power-menu",
+		"tooltip": false,
+	},
 
 	"tray": {
 		"icon-size": 18
@@ -200,56 +209,6 @@
 		"format": " | ",
 		"tooltip": false
 	},
-
-	"custom/arrow1": {
-		"format": "",
-		"tooltip": false
-	},
-
-	"custom/arrow2": {
-		"format": "",
-		"tooltip": false
-	},
-
-	"custom/arrow3": {
-		"format": "",
-		"tooltip": false
-	},
-
-	"custom/arrow4": {
-		"format": "",
-		"tooltip": false
-	},
-
-	"custom/arrow5": {
-		"format": "",
-		"tooltip": false
-	},
-
-	"custom/arrow6": {
-		"format": "",
-		"tooltip": false
-	},
-
-	"custom/arrow7": {
-		"format": "",
-		"tooltip": false
-	},
-
-	"custom/arrow8": {
-		"format": "",
-		"tooltip": false
-	},
-
-	"custom/arrow9": {
-		"format": "",
-		"tooltip": false
-	},
-
-	"custom/arrow10": {
-		"format": "",
-		"tooltip": false
-	}
 }
 
 // vi:ft=jsonc

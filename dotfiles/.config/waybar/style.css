@@ -12,7 +12,8 @@
 
 /* Colors (gruvbox) */
 @define-color black	#282828;
-/* @define-color black	rgba(40, 40, 40, 0.7); */
+@define-color black_mid	rgba(40, 40, 40, 0.6);
+@define-color black_zero	rgba(40, 40, 40, 0.0);
 @define-color red	#cc241d;
 @define-color green	#98971a;
 @define-color yellow	#d79921;
@@ -43,24 +44,26 @@
 @define-color temp	@brgreen;
 @define-color layout	@bryellow;
 @define-color battery	@aqua;
+@define-color power  	@aqua;
 @define-color date	@black;
 @define-color time	@white;
 
 @define-color warning 	 @bryellow;
 @define-color critical	 @red;
-@define-color mode	     @black;
-@define-color unfocused  @black;
 @define-color focused	 @bg2;
-@define-color sound	     @black;
-@define-color network	 @black;
-@define-color memory	 @black;
-@define-color cpu	     @black;
-@define-color temp	     @black;
-@define-color layout	 @black;
-@define-color battery	 @black;
-@define-color date	     @black;
-@define-color time	     @black;
-@define-color tray	     @black;
+@define-color mode	     @black_zero;
+@define-color unfocused  @black_zero;
+@define-color sound	     @black_zero;
+@define-color network	 @black_zero;
+@define-color memory	 @black_zero;
+@define-color cpu	     @black_zero;
+@define-color temp	     @black_zero;
+@define-color layout	 @black_zero;
+@define-color battery	 @black_zero;
+@define-color power  	 @black_zero;
+@define-color date	     @black_zero;
+@define-color time	     @black_zero;
+@define-color tray	     @black_zero;
 
 @define-color warning_text 	 @bryellow;
 @define-color critical_text	 @white;
@@ -74,6 +77,7 @@
 @define-color temp_text	     @aqua;
 @define-color layout_text	 @aqua;
 @define-color battery_text	 @aqua;
+@define-color power_text	 @aqua;
 @define-color date_text	     @aqua;
 @define-color time_text	     @aqua;
 
@@ -82,7 +86,7 @@
 	border: none;
 	border-radius: 0;
 	min-height: 0;
-	margin: 0.05;
+	margin: 0.00; /* 0.05 */
 	padding: 0;
 	box-shadow: none;
 	text-shadow: none;
@@ -92,7 +96,7 @@
 /* The whole bar */
 #waybar {
 	/* background: rgba(40, 40, 40, 0.8784313725);*/ /* #282828e0 */
-	background: @black;
+	background: @black_mid;
 	color: @white;
 	font-family: JetBrains Mono, Siji;
 	font-size: 11pt;
@@ -223,6 +227,11 @@
 	background: @battery;
 	font-size: 8pt;
 }
+#custom-power {
+	color: @power_text;
+	background: @power;
+	font-size: 11pt;
+}
 
 #tray {
 	background: @tray;
@@ -242,65 +251,5 @@
 	font-size: 11pt;
 	color: @layout_text;
 	background: @layout;
-}
-
-#custom-arrow1 {
-	font-size: 11pt;
-	color: @time;
-	background: @date;
-}
-
-#custom-arrow2 {
-	font-size: 11pt;
-	color: @date;
-	background: @layout;
-}
-
-#custom-arrow3 {
-	font-size: 11pt;
-	color: @layout;
-	background: @battery;
-}
-
-#custom-arrow4 {
-	font-size: 11pt;
-	color: @battery;
-	background: @temp;
-}
-
-#custom-arrow5 {
-	font-size: 11pt;
-	color: @temp;
-	background: @cpu;
-}
-
-#custom-arrow6 {
-	font-size: 11pt;
-	color: @cpu;
-	background: @memory;
-}
-
-#custom-arrow7 {
-	font-size: 11pt;
-	color: @memory;
-	background: @network;
-}
-
-#custom-arrow8 {
-	font-size: 11pt;
-	color: @network;
-	background: @sound;
-}
-
-#custom-arrow9 {
-	font-size: 11pt;
-	color: @sound;
-	background: transparent;
-}
-
-#custom-arrow10 {
-	font-size: 11pt;
-	color: @unfocused;
-	background: transparent;
 }
 
