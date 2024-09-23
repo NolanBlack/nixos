@@ -27,6 +27,8 @@ do NOT automatically revert to the configuration corresponding to that OS versio
 ```sh
 nix flake update
 ```
+- updates the git record of all nixpkgs
+- recommend to create a stable "rebuild" prior to update"
 
 ### delete unused store objects ###
 ```sh
