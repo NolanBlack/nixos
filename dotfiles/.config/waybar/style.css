@@ -12,7 +12,7 @@
 
 /* Colors (gruvbox) */
 @define-color black	#282828;
-@define-color black_mid	rgba(40, 40, 40, 0.6);
+@define-color black_mid	rgba(40, 40, 40, 0.5);
 @define-color black_zero	rgba(40, 40, 40, 0.0);
 @define-color red	#cc241d;
 @define-color green	#98971a;
@@ -205,16 +205,19 @@
 #memory {
 	color: @memory_text;
 	background: @memory;
+	font-size: 9pt;
 }
 
 #cpu {
 	color: @cpu_text;
 	background: @cpu;
+	font-size: 9pt;
 }
 
 #temperature {
 	color: @temp_text;
 	background: @temp;
+	font-size: 9pt;
 }
 
 #language {
@@ -232,6 +235,7 @@
 	background: @power;
 	padding-left: 10pt;
 	padding-right: 10pt;
+	font-size: 9pt;
 }
 
 #tray {
