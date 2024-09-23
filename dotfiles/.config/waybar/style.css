@@ -69,7 +69,7 @@
 @define-color critical_text	 @white;
 @define-color mode_text	     @white;
 @define-color focused_text	 @bryellow;
-@define-color unfocused_text @gray;
+@define-color unfocused_text @aqua;
 @define-color sound_text	 @aqua;
 @define-color network_text	 @aqua;
 @define-color memory_text	 @aqua;
@@ -230,7 +230,8 @@
 #custom-power {
 	color: @power_text;
 	background: @power;
-	font-size: 11pt;
+	padding-left: 10pt;
+	padding-right: 10pt;
 }
 
 #tray {
