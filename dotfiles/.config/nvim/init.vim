@@ -33,7 +33,10 @@ set termguicolors
 
 
 set exrc
-set guicursor=
+" cursor is block all the time
+" set guicursor=
+" cursor is line in insert mode, else block (default)
+set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20
 set relativenumber
 set nu
 

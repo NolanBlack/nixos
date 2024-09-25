@@ -61,6 +61,7 @@ require('telescope').setup({
         initial_mdoe = "normal",
         sorting_strategy = "ascending",
         layout_strategy = "vertical",
+        scroll_strategy = "limit", 
         layout_config = {
             horizontal = {
                 prompt_position = "top",

@@ -153,6 +153,7 @@
         wdisplays
         xwayland
         pulseaudioFull
+        brightnessctl
         waybar
         (pkgs.waybar.overrideAttrs (oldAttrs: {
                         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];

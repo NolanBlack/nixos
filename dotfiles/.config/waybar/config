@@ -40,10 +40,11 @@
 		},
 		"format-time": "{H}:{M:02}",
 		//"format": "{icon} {capacity}% ({time})",
-		"format": "{icon} {capacity}%",
+		"format": "{icon}",
 		"format-charging": " {capacity}%",
 		"format-charging-full": " {capacity}%",
-		"format-full": "{icon}",
+		//"format-full": "{icon}",
+		"format-full": "{icon} {capacity}%",
 		"format-alt": "{icon} {power}W",
 		"format-icons": [
 			"",
@@ -94,7 +95,7 @@
 	"cpu": {
 		"interval": 2,
 		/*"format": "CPU  {usage}%",*/
-		"format": " {usage}%",
+		"format": " {usage:02}%",
 		"format-alt": " {load}",
 		"states": {
 			"warning": 70,
@@ -113,7 +114,7 @@
 	"memory": {
         "min-length": 0,
 		"interval": 3,
-		"format": " {}%",
+		"format": " {:02}%",
 		//"format": "MEM {}%",
 		"format-alt": " {used:0.1f}G/{total:0.1f}G",
 		"states": {
@@ -186,12 +187,13 @@
 			""
 		],
 		"tooltip": false,
-        "thermal-zone": 0,
+        // for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+        "thermal-zone": 8, // x86_pkg_temp is mobo sensor near core itself (pretty hot)
         // for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
         //"hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon7/temp1_input",
         //"hwmon-path": "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon6/temp1_input",
-        "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/hwmon", 
-        "input-filename": "temp1_input",
+        //"hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/hwmon", 
+        //"input-filename": "temp1_input",
 	},
 	"custom/power": {
 		"format": "⏻",

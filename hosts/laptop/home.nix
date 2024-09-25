@@ -9,24 +9,28 @@
 	# Home Manager is pretty good at managing dotfiles. The primary way to manage
 	# plain files is through 'home.file'.
 	home.file = {
-		".bashrc".source                            = ./../../dotfiles/.bashrc;
-		".vimrc".source                             = ./../../dotfiles/.vimrc;
-		".tmux.conf".source                         = ./../../dotfiles/.tmux.conf;
-		".config/hypr/hyprland.conf".source         = ./../../dotfiles/.config/hypr/hyprland.conf;
-		".config/waybar/config".source              = ./../../dotfiles/.config/waybar/config;
-		".config/waybar/toggle_sink.sh".source      = ./../../dotfiles/.config/waybar/toggle_sink.sh;
-		".config/waybar/style.css".source           = ./../../dotfiles/.config/waybar/style.css;
-		".config/zathura/zathurarc".source          = ./../../dotfiles/.config/zathura/zathurarc;
-		".config/gtk-3.0/gtk.css".source            = ./../../dotfiles/.config/gtk.css;
-		".config/kitty/curent-theme.conf".source    = ./../../dotfiles/.config/kitty/current-theme.conf;
-		".config/kitty/kitty.conf".source           = ./../../dotfiles/.config/kitty/kitty.conf;
-		".config/nvim/after/syntax/c.vim".source    = ./../../dotfiles/.config/nvim/syntax/c.vim;
-		".config/nvim/colors/gruvbones.lua".source   = ./../../dotfiles/.config/nvim/colors/gruvbones.lua;
+        ".config/.." = {
+            source = ./../../dotfiles;
+            recursive=true;
+        };
+        # ".bashrc".source                            = ./../../dotfiles/.bashrc;
+		# ".vimrc".source                             = ./../../dotfiles/.vimrc;
+		# ".tmux.conf".source                         = ./../../dotfiles/.tmux.conf;
+		# ".config/hypr/hyprland.conf".source         = ./../../dotfiles/.config/hypr/hyprland.conf;
+		# ".config/waybar/config".source              = ./../../dotfiles/.config/waybar/config;
+		# ".config/waybar/toggle_sink.sh".source      = ./../../dotfiles/.config/waybar/toggle_sink.sh;
+		# ".config/waybar/style.css".source           = ./../../dotfiles/.config/waybar/style.css;
+		# ".config/zathura/zathurarc".source          = ./../../dotfiles/.config/zathura/zathurarc;
+		# ".config/gtk-3.0/gtk.css".source            = ./../../dotfiles/.config/gtk.css;
+		# ".config/kitty/curent-theme.conf".source    = ./../../dotfiles/.config/kitty/current-theme.conf;
+		# ".config/kitty/kitty.conf".source           = ./../../dotfiles/.config/kitty/kitty.conf;
+		# ".vim/spell/en.utf-8.add".source            = ./../../dotfiles/.vim/spell/en.utf-8.add;
+		# ".config/nvim/after/syntax/c.vim".source    = ./../../dotfiles/.config/nvim/syntax/c.vim;
+		# ".config/nvim/colors/gruvbones.lua".source  = ./../../dotfiles/.config/nvim/colors/gruvbones.lua;
 	};
 
 	# nvim
-	programs.neovim = 
-	{
+	programs.neovim = {
 		enable = true;																																										 
 		viAlias = true;																																										 
 		vimAlias = true;																																									 
@@ -62,8 +66,8 @@
           			p.tree-sitter-lua
           			p.tree-sitter-python
           			p.tree-sitter-json
-                        #p.tree-sitter-c
-                        #p.tree-sitter-cpp
+                    # p.tree-sitter-c
+                    # p.tree-sitter-cpp
           			p.tree-sitter-markdown
           			p.tree-sitter-latex
 				]));
@@ -71,6 +75,7 @@
 				config = "${builtins.readFile ./../../dotfiles/.config/nvim/treesitter.lua}";
 			}
             nvim-treesitter-parsers.cpp
+            nvim-treesitter-parsers.comment
 
 
             # multiple colorschemes (the last one will be default)
