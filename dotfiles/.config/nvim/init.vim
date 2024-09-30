@@ -2,7 +2,8 @@ syntax on set vb
 filetype on
 set spell spelllang=en_us
 set spellfile=~/.vim/spell/en.utf-8.add
-set tabstop=4 softtabstop=4 
+set tabstop=4
+set softtabstop=4 
 set shiftwidth=4
 set expandtab
 set smartindent
@@ -87,6 +88,7 @@ nnoremap J <C-d>zz
 nnoremap K <C-u>zz
 map N Nzz
 map n nzz
+map G Gzz
 
 "Cut, copy, paste
 nnoremap Y y$
@@ -101,6 +103,9 @@ map <leader>y "yy <Bar> :call system('wl-copy -p', @y)<CR>
 nnoremap <leader>p :r!wl-paste -p<CR><CR>
 nnoremap <leader>v :r!wl-paste<CR><CR>
 
+" spelling next
+nnoremap zn ]s
+nnoremap zN [s
 
 "Tab movement
 nnoremap L gt
@@ -113,6 +118,21 @@ noremap <leader>a  :! column -t -s= -o=<CR>
 
 "Text alignment on input char
 command! -range -nargs=1 Align execute <line1>.",".<line2> . "! column -t -s<args> -o<args>"
+
+" :S or :S! to searc across multiple lines/breaks
+" Search for the ... arguments separated with whitespace (if no '!'),
+" or with non-word characters (if '!' added to command).
+function! SearchMultiLine(bang, ...)
+  if a:0 > 0
+    let sep = (a:bang) ? '\_W\+' : '\_s\+'
+    let @/ = join(a:000, sep)
+  endif
+endfunction
+command! -bang -nargs=* -complete=tag S call SearchMultiLine(<bang>0, <f-args>)|normal! /<C-R>/<CR>
+
+:command! RemoveQFItem :call RemoveQFItem()
+" search for the current contents of your clipboard
+noremap <C-s> :S <C-r>+<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Quickfix
@@ -171,12 +191,17 @@ nnoremap <silent> <leader>- :vertical resize -5<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Latex helpers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufReadPost,BufNewFile *.tex setfiletype=tex
 augroup WrapLineInTeXFile
         autocmd!
         autocmd FileType tex setlocal wrap linebreak
         autocmd FileType tex setlocal textwidth=80
         autocmd FileType tex map j gj
         autocmd FileType tex map k gk
+        autocmd FileType plaintex setlocal wrap linebreak
+        autocmd FileType plaintex setlocal textwidth=80
+        autocmd FileType plaintex map j gj
+        autocmd FileType plaintex map k gk
         "autocmd FileType tex setlocal syntax=tex
 augroup END
 
