@@ -198,6 +198,7 @@ augroup WrapLineInTeXFile
         autocmd FileType tex setlocal textwidth=80
         autocmd FileType tex map j gj
         autocmd FileType tex map k gk
+        autocmd FileType plaintex setlocal filetype=tex
         autocmd FileType plaintex setlocal wrap linebreak
         autocmd FileType plaintex setlocal textwidth=80
         autocmd FileType plaintex map j gj

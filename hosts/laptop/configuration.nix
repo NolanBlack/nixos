@@ -116,12 +116,12 @@
         portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
 
-    environment.sessionVariables = {
-        # If your cursor becomes invisible
-        WLR_NO_HARDWARE_CURSORS = "1";
-        # Hint electron apps to use wayland
-        NIXOS_OZONE_WL = "1";
-    };
+    #environment.sessionVariables = {
+    #    # If your cursor becomes invisible
+    #    WLR_NO_HARDWARE_CURSORS = "1";
+    #    # Hint electron apps to use wayland
+    #    NIXOS_OZONE_WL = "1";
+    #};
     
     hardware = {
         graphics.enable = true;

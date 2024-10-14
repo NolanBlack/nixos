@@ -26,7 +26,7 @@
         #".vim/spell/en.utf-8.add".source            = config.lib.file.mkOutOfStoreSymlink ./../../dotfiles/.vim/spell/en.utf-8.add;
 
         # this must be hard coded!
-        ".vim/spell/en.utf-8.add".source            = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/dotfiles/.vim/spell/en.utf-8.add";
+        ".vim/spell/en.utf-8.add".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/dotfiles/.vim/spell/en.utf-8.add";
         # this was error prone...
         # ".config/.." = {
         #     source = ./../../dotfiles;
@@ -128,12 +128,22 @@
 	gtk.cursorTheme.package = pkgs.bibata-cursors;
     gtk.cursorTheme.name = "Bibata-Original-Classic";
     # gtk.cursorTheme.name = "Bibata-Original-Winter";
+    # gtk.cursorTheme.name = "Bibata-Modern-Ice";
 
 	gtk.theme.package = pkgs.adw-gtk3;
 	gtk.theme.name = "adw-gtk3";
     
     gtk.iconTheme.package =  pkgs.adwaita-icon-theme;
     gtk.iconTheme.name = "Adwaita-dark";
+
+    home.pointerCursor = {
+        name = "Bibata-Original-Classic";
+        package = pkgs.bibata-cursors;
+        size = 64;
+        gtk.enable = true;
+        x11.enable = true;
+        x11.defaultCursor = "Bibata-Original-Classic";
+    };
 
 
 	# This value determines the Home Manager release that your configuration is
