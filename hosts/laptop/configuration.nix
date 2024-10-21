@@ -177,6 +177,7 @@
         spotify # music
         zathura # pdf (minimal)
         okular  # pdf
+        imagemagick # image, pdf, and gif utils
         ghostwriter # markdown
         tmux # terminal multiplex
         zoom-us # video conference
@@ -186,6 +187,7 @@
         gnumake
         cmake
         python3
+        filezilla
 
         # sci ml
         petsc
