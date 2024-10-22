@@ -17,7 +17,7 @@
 		".config/waybar/toggle_sink.sh".source      = ./../../dotfiles/.config/waybar/toggle_sink.sh;
 		".config/waybar/style.css".source           = ./../../dotfiles/.config/waybar/style.css;
 		".config/zathura/zathurarc".source          = ./../../dotfiles/.config/zathura/zathurarc;
-		".config/gtk-3.0/gtk.css".source            = ./../../dotfiles/.config/gtk.css;
+        ".config/gtk-3.0/gtk.css".source            = ./../../dotfiles/.config/gtk.css;
 		".config/kitty/curent-theme.conf".source    = ./../../dotfiles/.config/kitty/current-theme.conf;
 		".config/kitty/kitty.conf".source           = ./../../dotfiles/.config/kitty/kitty.conf;
         #".vim/spell/en.utf-8.add".source            = ./../../dotfiles/.vim/spell/en.utf-8.add;
@@ -136,14 +136,14 @@
     gtk.iconTheme.package =  pkgs.adwaita-icon-theme;
     gtk.iconTheme.name = "Adwaita-dark";
 
-    home.pointerCursor = {
-        name = "Bibata-Original-Classic";
-        package = pkgs.bibata-cursors;
-        size = 64;
-        gtk.enable = true;
-        x11.enable = true;
-        x11.defaultCursor = "Bibata-Original-Classic";
-    };
+    #home.pointerCursor = {
+    #    name = "Bibata-Original-Classic";
+    #    package = pkgs.bibata-cursors;
+    #    size = 64;
+    #    gtk.enable = true;
+    #    x11.enable = true;
+    #    #x11.defaultCursor = "Bibata-Original-Classic";
+    #};
 
 
 	# This value determines the Home Manager release that your configuration is
