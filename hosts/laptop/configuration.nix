@@ -172,6 +172,8 @@
         wl-clipboard # clipboard access (wayland)
         gscreenshot # screen shots
         htop # sys monitor
+        ntfs3g # file system mounting/ ntfsfix
+        ghostscript # useful postscript interpreter
 
         libreoffice # office docs
         spotify # music
@@ -179,6 +181,7 @@
         okular  # pdf
         imagemagick # image, pdf, and gif utils
         ghostwriter # markdown
+        gthumb # photo viewer/edior
         tmux # terminal multiplex
         zoom-us # video conference
 
