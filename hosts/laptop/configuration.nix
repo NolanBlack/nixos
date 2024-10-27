@@ -166,6 +166,7 @@
         kitty # term
         rofi-wayland # app launcher
         rofi-power-menu # power menu
+        unzip # unzip archives
         pcmanfm # file manager
         ripgrep # grep tool
         xclip # clipboard access (x)

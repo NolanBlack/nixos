@@ -4,6 +4,9 @@ map <C-o> zoom out
 map J scroll half-down
 map K scroll half-up
 unmap a
+unmap q
+unmap <C-p>
+map <C-P> print
 
 # enable copy to clipboard
 set selection-clipboard clipboard
