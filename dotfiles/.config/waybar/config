@@ -36,7 +36,6 @@
 		"states": {
 			"warning": 30,
 			"critical": 15,
-            "full": 95
 		},
 		"format-time": "{H}:{M:02}",
 		//"format": "{icon} {capacity}% ({time})",

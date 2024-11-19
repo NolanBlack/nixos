@@ -104,8 +104,8 @@ nnoremap <leader>p :r!wl-paste -p<CR><CR>
 nnoremap <leader>v :r!wl-paste<CR><CR>
 
 " spelling next
-nnoremap zn ]s
-nnoremap zN [s
+nnoremap zn ]szz
+nnoremap zN [szz
 
 "Tab movement
 nnoremap L gt

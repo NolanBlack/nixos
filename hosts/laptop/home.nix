@@ -27,6 +27,7 @@
 
         # this must be hard coded!
         ".vim/spell/en.utf-8.add".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/dotfiles/.vim/spell/en.utf-8.add";
+
         # this was error prone...
         # ".config/.." = {
         #     source = ./../../dotfiles;

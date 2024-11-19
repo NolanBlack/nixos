@@ -7,6 +7,7 @@ alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
 alias a='fc -s ; history -d -1'
+export HISTCONTROL=ignoredups # ignore duplicates in history
 
 alias drexelvpn='sudo openconnect --protocol=anyconnect --authgroup=DrexelVPN --user=njb89 vpn.drexel.edu'
 # sometimes ssh may fail if server doesn't recognize kitty
@@ -25,7 +26,7 @@ zz() {
 }
 
 timeit() {
-    { /usr/bin/time -f'\nCommand "%C" on %P CPU\n\tElapsed \t\t%E\n\tMax resident set size \t%M KB\n' $@ ; } 2>&1 | grep -E --color=always '^|Command|Max resident set size|Elapsed|Elapsed (wall clock)'
+    { time -f'\nCommand "%C" on %P CPU\n\tElapsed \t\t%E\n\tMax resident set size \t%M KB\n' $@ ; } 2>&1 | grep -E --color=always '^|Command|Max resident set size|Elapsed|Elapsed (wall clock)'
 }
 
 unset rc                                                                                          

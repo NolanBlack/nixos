@@ -103,9 +103,12 @@
     # # hyprland
     # services.xserver.videosDrivers = ["nvidia"];
     # desktop portal
-    #xdg.portal.enable = true;
-    #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    #xdg.portal.xdgOpenUsePortal = true;
+    xdg.portal.enable = true;
+    xdg.portal.extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-kde
+    ];
+    xdg.portal.xdgOpenUsePortal = true;
 
     services.xserver.displayManager.gdm.wayland = true;
     programs.hyprland = {
