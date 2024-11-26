@@ -62,6 +62,11 @@
 				config = "${builtins.readFile ./../../dotfiles/.config/nvim/telescope.lua}";
 			}
 			telescope-fzf-native-nvim
+			{
+				plugin = indent-blankline-nvim;
+				type = "lua";
+				config = "${builtins.readFile ./../../dotfiles/.config/nvim/indent-blankline-nvim.lua}";
+			}
 
             # load treesitter and its syntax highlighting rules
 			{
