@@ -215,7 +215,8 @@
     # fonts
     fonts.packages = with pkgs; [
         font-awesome
-        (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+        nerd-fonts.symbols-only
+        #(nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     ];
 
     # Some programs need SUID wrappers, can be configured further or are
