@@ -127,9 +127,6 @@
     };
 
     
-    # Need to link to libexec to have update-systemd-resolved
-    environment.pathsToLink = [ "/libexec" ];
-
     
     hardware = {
         graphics.enable = true;
@@ -137,6 +134,8 @@
         nvidia.modesetting.enable = true;
     };
 
+    # OPENVPN
+    # OPENVPN.optionA run via system
     # enable openvpn
     #services.openvpn.servers = {
     #    officeVPN  = {
@@ -144,18 +143,19 @@
     #        updateResolvConf = true;
     #    };
     #};
-    # enable systemd-resolved for vpn
+
+    # OPENVPN.optionB enable systemd-resolved for vpn
+    # run via `sudo openvpn --config path/to/config`
     # may need to run 
     #       systemctl enable systemd-resolved.service
     #       systemctl start systemd-resolved.service
-    # prior to vpn
     services.resolved = {
         enable = true;
-        dnssec = "true";
-        domains = [ "~." ];
-        fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-        dnsovertls = "true";
     };
+
+    # Need to link to libexec to have update-systemd-resolved
+    environment.pathsToLink = [ "/libexec" ];
+
 
 
     ############################################################################
