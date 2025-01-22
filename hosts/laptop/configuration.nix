@@ -125,12 +125,38 @@
         # Hint electron apps to use wayland
         NIXOS_OZONE_WL = "1";
     };
+
+    
+    # Need to link to libexec to have update-systemd-resolved
+    environment.pathsToLink = [ "/libexec" ];
+
     
     hardware = {
         graphics.enable = true;
         # Most wayland compositors need this
         nvidia.modesetting.enable = true;
     };
+
+    # enable openvpn
+    services.openvpn.servers = {
+        officeVPN  = {
+            config = '' config /home/nolan/Downloads/vpnconfig_cert.ovpn '';
+            updateResolvConf = true;
+        };
+    };
+    # enable systemd-resolved for vpn
+    # may need to run 
+    #       systemctl enable systemd-resolved.service
+    #       systemctl start systemd-resolved.service
+    # prior to vpn
+    services.resolved = {
+        enable = true;
+        dnssec = "true";
+        domains = [ "~." ];
+        fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+        dnsovertls = "true";
+    };
+
 
     ############################################################################
     # USER SETUP
