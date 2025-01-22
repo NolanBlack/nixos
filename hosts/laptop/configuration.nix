@@ -138,12 +138,12 @@
     };
 
     # enable openvpn
-    services.openvpn.servers = {
-        officeVPN  = {
-            config = '' config /home/nolan/Downloads/vpnconfig_cert.ovpn '';
-            updateResolvConf = true;
-        };
-    };
+    #services.openvpn.servers = {
+    #    officeVPN  = {
+    #        config = '' config /home/nolan/Downloads/vpnconfig_cert.ovpn '';
+    #        updateResolvConf = true;
+    #    };
+    #};
     # enable systemd-resolved for vpn
     # may need to run 
     #       systemctl enable systemd-resolved.service
