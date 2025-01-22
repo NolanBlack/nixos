@@ -163,6 +163,8 @@
                     })
         )
         openconnect # vpn
+        openvpn # vpn
+        update-systemd-resolved # for openvpn
         dunst # notfications
         libnotify # for dunst
         swww # wallpapers
