@@ -1,0 +1,59 @@
+# shell.nix
+let
+    pkgs = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/cf8cc1201be8bc71b7cbbbdaf349b22f4f99c7ae.tar.gz") {};
+    # this may be useful drop in forr LD_LIBRARY_PATH ? 
+    #lib-path = with pkgs; lib.makeLibraryPath [
+    #    libffi
+    #    openssl
+    #    stdenv.cc.cc
+    #];
+in pkgs.mkShell {
+    packages = [
+        (pkgs.python3.withPackages (python-pkgs: [
+            python-pkgs.numpy
+            python-pkgs.matplotlib
+            python-pkgs.torch
+        ]))
+    ];
+    buildInputs = [
+        #git
+        #openssh
+    ];
+
+    # setup LD path using nix-ld
+    NIX_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+        pkgs.stdenv.cc.cc
+        # pkgs.openssl
+        # ...
+    ];
+    NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker";
+
+    shellHook = ''
+        VENV=.venv
+
+        # create a virtualenv if there isn't one.
+        if [ -d "$VENV" ]; then
+            echo "Skipping venv creation, '$VENV' already exists"
+        else
+            echo "Creating new venv environment in path: '$VENV'"
+            python3 -m venv "$VENV"
+        fi
+        # activate our virtual env.
+        source "$VENV/bin/activate"
+        #export PYTHONPATH=`pwd`/$VENV/${pkgs.python.sitePackages}/:$PYTHONPATH
+
+        # matplotlib fonts
+        export FONTCONFIG_FILE=${pkgs.fontconfig.out}/etc/fonts/fonts.conf
+        export FONTCONFIG_PATH=${pkgs.fontconfig.out}/etc/fonts/
+
+        # pytorch
+        #export LD_LIBRARY_PATH=${pkgs.stdenv.cc.cc.lib}/lib
+
+        # numpy
+        #export LD_LIBRARY_PATH=${pkgs.zlib}/lib:$LD_LIBRARY_PATH
+    '';
+    # this may be uesful for linking?
+    #postShellHook = ''
+    #    ln -sf ${pkgs.python.sitePackages}/* ./.venv/lib/python3.11/site-packages
+    #'';
+}
