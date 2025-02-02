@@ -7,6 +7,6 @@ echo "updating flake ${flakename}"
 git add .
 sudo nixos-rebuild switch --flake ./#${flakename}
 gen=$(nixos-rebuild list-generations | grep current)
-git commit -am"$gen"
+git commit -am"flake $flakename: $gen"
 echo "running configure ${flakename}"
 source configure ${flakename}

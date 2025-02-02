@@ -130,7 +130,7 @@
                         # The main layer, if you choose to declare it in Nix
                         main = {
                             # you might need to also enclose the key in quotes if it contains non-alphabetical symbols
-                            capslock = "overload(control, super)";
+                            capslock = "overload(control, leftmeta)";
                         };
                         otherlayer = {};
                     };
