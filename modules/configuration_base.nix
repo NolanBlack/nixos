@@ -16,6 +16,13 @@
     # Enable networking
     networking.networkmanager.enable = true;
 
+    # Open ports in the firewall.
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+    # networking.firewall.enable = false;
+
+
     # System
     # Set your time zone.
     time.timeZone = "America/Denver";
@@ -43,6 +50,10 @@
 
     # setup flakes
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+    # Enable the GNOME Desktop Environment.
+    services.xserver.displayManager.gdm.enable = true;
+    services.xserver.desktopManager.gnome.enable = true;
 
     ############################################################################
     # Programs
@@ -81,6 +92,14 @@
     # LD_LIBRARY_PATH before passing execution to the actual ld. This allows
     # you to specify additional libraries that the executable needs to run.
     programs.nix-ld.enable = true;
+
+    # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    # programs.mtr.enable = true;
+    # programs.gnupg.agent = {
+    #       enable = true;
+    #       enableSSHSupport = true;
+    # };
 
     ############################################################################
     # Services
@@ -122,7 +141,25 @@
     # Packages
     ############################################################################
     environment.systemPackages = with pkgs; [
-        brave
+        git
+        wget
+        xorg.xmodmap
+        xorg.xkbcomp
+        xorg.xset
+        wdisplays
+        xwayland
+        pulseaudioFull
+        brightnessctl
+        openconnect # vpn
+        unzip # unzip archives
+        ripgrep # grep tool
+        xclip # clipboard access (x)
+        wl-clipboard # clipboard access (wayland)
+        htop # sys monitor
+        ntfs3g # file system mounting/ ntfsfix
+        ghostscript # useful postscript interpreter
+        imagemagick # image, pdf, and gif utils
+
     ];
 
 }

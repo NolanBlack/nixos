@@ -3,6 +3,7 @@
 {
     environment.systemPackages = with pkgs; [
         openvpn # vpn
+        update-systemd-resolved # for openvpn
     ];
 
     # OPENVPN
