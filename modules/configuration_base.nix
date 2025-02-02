@@ -128,9 +128,9 @@
                     # Everything but the ID section:
                     settings = {
                         # The main layer, if you choose to declare it in Nix
-                        main = {
-                            # you might need to also enclose the key in quotes if it contains non-alphabetical symbols
-                            capslock = "overload(control, leftmeta)";
+                        main = { # you might need to also enclose the key in quotes if it contains non-alphabetical symbols
+                            # capslock mapped to escape (when pressed), meta (when held)
+                            capslock = "overload(leftmeta, escape)";
                         };
                         otherlayer = {};
                     };
