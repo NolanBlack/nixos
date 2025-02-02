@@ -1,7 +1,7 @@
 # Usage
 
  ### will rebuild the system ###
-```sh
+```bash
 ./rebuild [flakename=default]
 ```
 - create a new OS image for the bootloader
@@ -9,7 +9,7 @@
 - use this when you want to rebuild, save, and switch to a new record of the system
 
 ### test system rebuild without creating entry ###
-```sh
+```bash
 ./test [flakename=defualt]
 ```
 - switch to the specified OS image for the life of this session
@@ -19,23 +19,23 @@ do NOT automatically revert to the configuration corresponding to that OS versio
     - to revert these files, checkout the commit corresponding to the specified OS build
 
 ### to run home-manager update (update the doftiles). ###
-```sh
+```bash
 ./configure [flakename=defualt]
 ```
 
 ### update the flake record ###
-```sh
+```bash
 nix flake update
 ```
 - updates the git record of all nixpkgs
 - recommend to create a stable "rebuild" prior to update"
 
 ### delete unused store objects ###
-```sh
+```bash
 nix-collect-garbage
 ```
 
-```sh
+```bash
 nix-collect-garbage --delete-older-than 7d
 ```
 - deletes unused store objects AND 
