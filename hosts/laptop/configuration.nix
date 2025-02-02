@@ -9,9 +9,15 @@
     # MINIMAL
     ############################################################################
     imports =
-        [ # Include the results of the hardware scan.
+        [   # Include the results of the hardware scan.
             ./hardware-configuration.nix
+
+            # home-manager
             inputs.home-manager.nixosModules.default
+
+            # my modules
+            ../../modules/configuration_base.nix
+            ../../modules/configuration_openvpn.nix
         ];
 
     # Bootloader.
@@ -48,43 +54,8 @@
         LC_TIME = "en_US.UTF-8";
     };
 
-    # Enable the X11 windowing system.
-    services.xserver.enable = true;
-
-    # Configure keymap in X11
-    services.xserver.autoRepeatDelay = 250;
-    services.xserver.autoRepeatInterval = 60;
-    services.xserver.xkb = {
-        layout = "us";
-        variant = "";
-        options = "caps:swapescape";
-    };
-    console.useXkbConfig = true;
-
-    # Enable CUPS to print documents.
-    services.printing.enable = true;
-
-    # Enable sound with pipewire.
-    hardware.pulseaudio.enable = false;
-    security.rtkit.enable = true;
-    services.pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-        # If you want to use JACK applications, uncomment this
-        #jack.enable = true;
-
-        # use the example session manager (no others are packaged yet so this is enabled by default,
-        # no need to redefine it in your config for now)
-        #media-session.enable = true;
-    };
-
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;
-
-    # Install firefox.
-    programs.firefox.enable = true;
 
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
@@ -106,7 +77,6 @@
     xdg.portal.enable = true;
     xdg.portal.extraPortals = [
         pkgs.xdg-desktop-portal-gtk
-        pkgs.xdg-desktop-portal-kde
     ];
     xdg.portal.xdgOpenUsePortal = true;
 
@@ -126,8 +96,6 @@
         NIXOS_OZONE_WL = "1";
     };
 
-    
-    
     hardware = {
         graphics.enable = true;
         # Most wayland compositors need this
@@ -167,7 +135,6 @@
                     })
         )
         openconnect # vpn
-        openvpn # vpn
         update-systemd-resolved # for openvpn
         dunst # notfications
         libnotify # for dunst
@@ -209,36 +176,7 @@
         libtorch-bin
         texliveFull
     ];
-    # neovim
-    programs.neovim = {
-        enable = true;
-        viAlias = true;
-        vimAlias = true;
-        defaultEditor = true;
-    };
 
-    # nix-ld (for running
-    # Precompiled binaries that were not created for NixOS usually have a
-    # so-called link-loader hardcoded into them. On Linux/x86_64 this is for
-    # example /lib64/ld-linux-x86-64.so.2. for glibc. NixOS, on the other
-    # hand, usually has its dynamic linker in the glibc package in the Nix
-    # store and therefore cannot run these binaries. Nix-ld provides a shim
-    # layer for these types of binaries. It is installed in the same location
-    # where other Linux distributions install their link loader, ie.
-    # /lib64/ld-linux-x86-64.so.2 and then loads the actual link loader as
-    # specified in the environment variable NIX_LD. In addition, it also
-    # accepts a colon-separated path from library lookup paths in
-    # NIX_LD_LIBRARY_PATH. This environment variable is rewritten to
-    # LD_LIBRARY_PATH before passing execution to the actual ld. This allows
-    # you to specify additional libraries that the executable needs to run.
-    programs.nix-ld.enable = true;
-
-    # fonts
-    fonts.packages = with pkgs; [
-        font-awesome
-        nerd-fonts.symbols-only
-        #(nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
-    ];
 
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
@@ -252,27 +190,6 @@
 
     # Enable the OpenSSH daemon.
     # services.openssh.enable = true;
-    # OPENVPN
-    # OPENVPN.optionA run via system
-    # enable openvpn
-    #services.openvpn.servers = {
-    #    officeVPN  = {
-    #        config = '' config /home/nolan/Downloads/vpnconfig_cert.ovpn '';
-    #        updateResolvConf = true;
-    #    };
-    #};
-
-    # OPENVPN.optionB enable systemd-resolved for vpn
-    # run via `sudo openvpn --config path/to/config`
-    # may need to run 
-    #       systemctl enable systemd-resolved.service
-    #       systemctl start systemd-resolved.service
-    services.resolved = {
-        enable = true;
-    };
-
-    # Need to link to libexec to have update-systemd-resolved
-    environment.pathsToLink = [ "/libexec" ];
 
     # Open ports in the firewall.
     # networking.firewall.allowedTCPPorts = [ ... ];
