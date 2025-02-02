@@ -29,6 +29,12 @@
                     ./hosts/laptop/configuration.nix
                 ];
             };
+            guest = nixpkgs.lib.nixosSystem {
+                specialArgs = {inherit inputs outputs;};
+                modules = [
+                    ./hosts/laptop/configuration.nix
+                ];
+            };
         };
 
         # Standalone home-manager configuration entrypoint
@@ -39,6 +45,13 @@
                 extraSpecialArgs = {inherit inputs outputs;};
                 modules = [
                     ./hosts/laptop/home_nolan.nix
+                ];
+            };
+            "guest" = home-manager.lib.homeManagerConfiguration {
+                pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+                extraSpecialArgs = {inherit inputs outputs;};
+                modules = [
+                    ./hosts/laptop/home_guest.nix
                 ];
             };
         };

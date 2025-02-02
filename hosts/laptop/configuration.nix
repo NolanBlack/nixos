@@ -38,10 +38,19 @@
     # USER SETUP
     ############################################################################
     # Define a user account. Don't forget to set a password with ‘passwd’.
+    # echo "userpassword"|sudo passwd --stdin username
     users.users.nolan = {
         isNormalUser = true;
         description = "nolan";
         extraGroups = [ "networkmanager" "wheel" ];
+        packages = with pkgs; [
+        ];
+    };
+
+    users.users.guest = {
+        isNormalUser = true;
+        description = "guest";
+        extraGroups = [ "networkmanager"];
         packages = with pkgs; [
         ];
     };
