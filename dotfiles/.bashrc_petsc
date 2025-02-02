@@ -1,0 +1,4 @@
+export PETSC_DIR='/home/nolan/Packages/petsc'
+export PETSC_ARCH='arch-linux-c-opt'
+alias mpiexec='${PETSC_DIR}/${PETSC_ARCH}/bin/mpiexec'
+

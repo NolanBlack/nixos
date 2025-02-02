@@ -27,7 +27,6 @@
                 specialArgs = {inherit inputs outputs;};
                 modules = [
                     ./hosts/laptop/configuration.nix
-                    # inputs.home-manager.nixosModules.default
                 ];
             };
         };
@@ -39,7 +38,7 @@
                 pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
                 extraSpecialArgs = {inherit inputs outputs;};
                 modules = [
-                    ./hosts/laptop/home.nix
+                    ./hosts/laptop/home_nolan.nix
                 ];
             };
         };
