@@ -61,6 +61,17 @@
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     environment.systemPackages = with pkgs; [
+        # programming
+        libgcc
+        tmux
+        gnumake
+        cmake
+        python3
+        filezilla
+        eigen
+        libtorch-bin
+        texliveFull
+        paraview
     ];
 
 
