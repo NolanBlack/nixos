@@ -114,7 +114,7 @@
     services.xserver.xkb = {
         layout = "us";
         variant = "";
-        # options = "caps:swapescape";
+        # options = "caps:swapescape"; # quick and dirty caps -> escape, prefer to use keyd
     };
     console.useXkbConfig = true;
 
