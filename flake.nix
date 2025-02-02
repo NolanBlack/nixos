@@ -35,6 +35,12 @@
                     ./hosts/laptop/configuration.nix
                 ];
             };
+            yoga12 = nixpkgs.lib.nixosSystem {
+                specialArgs = {inherit inputs outputs;};
+                modules = [
+                    ./hosts/yoga12/configuration.nix
+                ];
+            };
         };
 
         # Standalone home-manager configuration entrypoint
@@ -52,6 +58,13 @@
                 extraSpecialArgs = {inherit inputs outputs;};
                 modules = [
                     ./hosts/laptop/home_guest.nix
+                ];
+            };
+            "yoga12" = home-manager.lib.homeManagerConfiguration {
+                pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+                extraSpecialArgs = {inherit inputs outputs;};
+                modules = [
+                    ./hosts/yoga12/home_nolan.nix
                 ];
             };
         };
