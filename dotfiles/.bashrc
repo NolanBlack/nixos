@@ -11,9 +11,9 @@ fi
 
 export HISTCONTROL=ignoredups # ignore duplicates in history
 
-# source files of form .bashrc*
+# source files of form .bashrc_*
 path="./"
-for file in $path.bashrc*
+for file in $path.bashrc_*
 do 
     if [ -f "$file" ];
     then
