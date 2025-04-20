@@ -182,6 +182,8 @@
         ntfs3g # file system mounting/ ntfsfix
         ghostscript # useful postscript interpreter
         imagemagick # image, pdf, and gif utils
+        fzf # cl util
+        bat # colored cat
 
     ];
 

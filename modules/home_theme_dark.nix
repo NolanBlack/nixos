@@ -2,10 +2,10 @@
 
 {
     # theme
-	qt.enable = true;
-	qt.platformTheme.name = "gtk";
-    qt.style.name = "adwaita-dark";
-	qt.style.package = pkgs.adwaita-qt;
+    #qt.enable = true;
+	#qt.platformTheme.name = "gtk";
+    #qt.style.name = "adwaita-dark";
+	#qt.style.package = pkgs.adwaita-qt;
 
 
 	gtk.enable = true;

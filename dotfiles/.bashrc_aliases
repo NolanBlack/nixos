@@ -13,3 +13,44 @@ zz() {
 timeit() {
     { time -f'\nCommand "%C" on %P CPU\n\tElapsed \t\t%E\n\tMax resident set size \t%M KB\n' $@ ; } 2>&1 | grep -E --color=always '^|Command|Max resident set size|Elapsed|Elapsed (wall clock)'
 }
+
+function displayFZFFiles {
+    echo $(fzf --border --layout reverse --height 40% --preview 'bat --theme=gruvbox-dark --color=always --style=header,grid --line-range :400 {}')
+}
+
+function nvimGoToFiles {
+    nvimExists=$(which nvim)
+    if [ -z "$nvimExists" ]; then
+      return;
+    fi;
+
+    selection=$(displayFZFFiles);
+    if [ -z "$selection" ]; then
+        return;
+    else
+        nvim $selection;
+    fi;
+}
+
+function displayRgPipedFzf {
+    echo $(rg . -n --hidden | fzf --layout reverse --border --height 40%);
+}
+
+function nvimGoToLine {
+    nvimExists=$(which nvim)
+    if [ -z "$nvimExists" ]; then
+      return;
+    fi
+    selection=$(displayRgPipedFzf)
+    if [ -z "$selection" ]; then
+      return;
+    else 
+        filename=$(echo $selection | awk -F ':' '{print $1}')
+        line=$(echo $selection | awk -F ':' '{print $2}')
+        nvim $(printf "+%s %s" $line $filename) +"normal zz";
+    fi
+}
+
+alias f="nvimGoToFiles"
+alias s="nvimGoToLine"
+
