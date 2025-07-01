@@ -1,0 +1,19 @@
+# source files of form .bashrc_*
+for file in ./dotfiles/.bashrc_*
+do 
+    if [ -f "$file" ];
+    then
+        . $file
+        echo "loaded $file"
+
+    fi
+done
+
+secret=bar
+if [ -f "$secret" ];
+then
+    . $file
+    echo "loaded $secret"
+else
+    echo "could not load $secret"
+fi

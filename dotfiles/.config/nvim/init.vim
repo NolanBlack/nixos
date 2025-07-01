@@ -209,6 +209,7 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plugin-specific
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 nnoremap <leader>n :NvimTreeToggle<CR>
 nnoremap <leader>N :NvimTreeFindFile<CR>
 

@@ -52,6 +52,13 @@
 
 			YouCompleteMe
 
+            {
+                plugin = avante-nvim;
+                type = "lua";
+				config = "${builtins.readFile ./../dotfiles/.config/nvim/avante.lua}";
+            }
+
+
 			{
 				plugin = telescope-nvim;
 				type = "lua";
