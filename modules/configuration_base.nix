@@ -25,7 +25,7 @@
 
     # System
     # Set your time zone.
-    time.timeZone = "America/Denver";
+    time.timeZone = "America/New_York";
 
     # Select internationalisation properties.
     i18n.defaultLocale = "en_US.UTF-8";
@@ -145,7 +145,7 @@
     services.printing.enable = true;
 
     # Enable sound with pipewire.
-    hardware.pulseaudio.enable = false;
+    services.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
         enable = true;
