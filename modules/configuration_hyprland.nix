@@ -37,7 +37,7 @@
         libnotify # for dunst
         swww # wallpapers
         kitty # term
-        rofi-wayland # app launcher
+        rofi # app launcher
         rofi-power-menu # power menu
         gscreenshot # screen shots
     ];

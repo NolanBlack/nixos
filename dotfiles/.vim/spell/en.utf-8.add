@@ -66,7 +66,6 @@ Piola
 Kirchoff
 indicial
 Mindlin
-intertial
 loadings
 2D
 ji
@@ -101,7 +100,6 @@ heterogeneities
 Mandel
 priori
 linearized
-dydadic
 microsurface
 ansatz
 3D
@@ -154,9 +152,12 @@ thresholding
 Hookean
 tradeoffs
 Isogeometric
-isogeometic
 isogeometric
 virtual/!
 virtual
 anisotropic
 virtual
+micromechanical
+T
+Schur
+hyperparameter
