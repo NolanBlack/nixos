@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
-flakename="default"
-if ! [ -z "$1" ]; then
-    flakename=$1
-fi
-echo "updating flake ${flakename}"
+
+# Run in this directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR" || exit 1 
+
+# set the FLAKE_NAME
+source _set_flakename.sh || return 1
+
+echo "updating flake ${FLAKE_NAME}"
 git add .
-sudo nixos-rebuild switch --flake ./#${flakename}
+sudo nixos-rebuild switch --flake ./#${FLAKE_NAME}
 gen=$(nixos-rebuild list-generations | grep current)
-git commit -am"flake $flakename: $gen"
-echo "running configure ${flakename}"
-source configure ${flakename}
+git commit -am"flake $FLAKE_NAME: $gen"
+echo "running configure ${FLAKE_NAME}"
+source configure ${FLAKE_NAME}

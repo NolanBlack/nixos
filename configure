@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
-flakename="default"
-if ! [ -z "$1" ]; then
-    flakename=$1
-fi
-echo "updating configuration ${flakename}"
+
+# Run in this directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR" || exit 1 
+
+# set the FLAKE_NAME
+source _set_flakename.sh || return 1
+
+echo "updating configuration ${FLAKE_NAME}"
 git add .
 if ! [ -x "$(command -v home-manager)" ]; then
     nix run home-manager switch
 fi
-home-manager switch --flake .#${flakename}
+home-manager switch --flake .#${FLAKE_NAME}
 
 hyprctl reload

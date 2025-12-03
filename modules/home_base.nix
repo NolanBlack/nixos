@@ -3,6 +3,7 @@
 {
 	home.file = {
         ".bashrc".source                            = ./../dotfiles/.bashrc;
+        ".bash_profile".source                      = ./../dotfiles/.bash_profile;
         ".bashrc_aliases".source                    = ./../dotfiles/.bashrc_aliases;
 		".vimrc".source                             = ./../dotfiles/.vimrc;
 		".tmux.conf".source                         = ./../dotfiles/.tmux.conf;

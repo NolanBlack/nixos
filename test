@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
-flakename="default"
-if ! [ -z "$1" ]; then
-    flakename=$1
-fi
-echo "testing flake ${flakename}"
+
+# Run in this directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR" || exit 1 
+
+# set the FLAKE_NAME
+source _set_flakename.sh || return 1
+
+echo "testing flake ${FLAKE_NAME}"
 git add .
-sudo nixos-rebuild test --fast --flake ./#${flakename}
+sudo nixos-rebuild test --fast --flake ./#${FLAKE_NAME}
