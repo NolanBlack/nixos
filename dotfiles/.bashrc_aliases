@@ -4,7 +4,9 @@ alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
+alias gl='git --no-pager log --oneline --all --decorate --graph'
 alias a='fc -s ; history -d -1'
+
 
 zz() {
     zathura $1 &

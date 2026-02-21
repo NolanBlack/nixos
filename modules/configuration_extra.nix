@@ -11,5 +11,6 @@
         gthumb # photo viewer/edior
         brave # chromium browser option
         #zoom-us # video conference
+        protonvpn-gui
     ];
 }
