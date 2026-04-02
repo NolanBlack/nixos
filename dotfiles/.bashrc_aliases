@@ -16,6 +16,12 @@ timeit() {
     { time -f'\nCommand "%C" on %P CPU\n\tElapsed \t\t%E\n\tMax resident set size \t%M KB\n' $@ ; } 2>&1 | grep -E --color=always '^|Command|Max resident set size|Elapsed|Elapsed (wall clock)'
 }
 
+pdf_to_img_to_pdf() {
+    rm output_$1*.png ; \
+    magick -verbose -density 300 -quality 100 -background white $1.pdf  output_$1.png && \
+    magick output_$1*.png $1_final.pdf
+}
+
 function displayFZFFiles {
     echo $(fzf --border --layout reverse --height 40% --preview 'bat --theme=gruvbox-dark --color=always --style=header,grid --line-range :400 {}')
 }
