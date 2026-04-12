@@ -2,7 +2,7 @@
 OPTIONS=("default" "yoga12")
 DEFAULT_OPTION="default"
 
-echo "Please select an option:"
+echo "Available flake(s):"
 for opt in "${OPTIONS[@]}"; do
     if [[ "$opt" == "$DEFAULT_OPTION" ]]; then
         echo "  - $opt (default)"
@@ -11,11 +11,18 @@ for opt in "${OPTIONS[@]}"; do
     fi
 done
 
-# Prompt for input
-read -p "Enter your choice (default: $DEFAULT_OPTION): " USER_INPUT
+# Check if the first argument is provided
+if [ -z "$1" ]; then
 
-# If $USER_INPUT is unset or empty, use $DEFAULT_OPTION instead.
-FLAKE_NAME="${USER_INPUT:-$DEFAULT_OPTION}"
+    # Prompt for input
+    read -p "Enter your choice (default: $DEFAULT_OPTION): " USER_INPUT
+
+    # If $USER_INPUT is unset or empty, use $DEFAULT_OPTION instead.
+    FLAKE_NAME="${USER_INPUT:-$DEFAULT_OPTION}"
+else
+    # If argument exists, use it
+    FLAKE_NAME=$1
+fi
 
 # Check if FLAKE_NAME in OPTIONS
 for opt in "${OPTIONS[@]}"; do
