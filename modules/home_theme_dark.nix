@@ -14,6 +14,7 @@
     # gtk.cursorTheme.name = "Bibata-Original-Winter";
     # gtk.cursorTheme.name = "Bibata-Modern-Ice";
 
+    gtk.gtk4.theme = config.gtk.theme;
 	gtk.theme.package = pkgs.adw-gtk3;
 	gtk.theme.name = "adw-gtk3";
     

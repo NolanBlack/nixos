@@ -38,6 +38,8 @@
 		viAlias = true;																																										 
 		vimAlias = true;																																									 
 		defaultEditor = true;  
+        withRuby = true;
+        withPython3 = true;
 		extraConfig = lib.fileContents ./../dotfiles/.config/nvim/init.vim;
 
 		extraPackages = with pkgs; [
