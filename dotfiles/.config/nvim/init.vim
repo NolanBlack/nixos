@@ -5,7 +5,8 @@ set spellfile=~/.vim/spell/en.utf-8.add
 set tabstop=4
 set softtabstop=4 
 set shiftwidth=4
-set expandtab
+"set expandtab
+set noexpandtab
 set smartindent
 set nowrap
 set showmatch
@@ -38,7 +39,7 @@ set exrc
 " set guicursor=
 " cursor is line in insert mode, else block (default)
 set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20
-set relativenumber
+"set relativenumber
 set nu
 
 set noerrorbells
@@ -219,3 +220,5 @@ nnoremap <leader>s :Telescope live_grep<CR>
 " nnoremap <silent> <leader>* :Telescope grep_string <C-R><C-W><CR>
 nnoremap <expr> <leader>* ':Telescope grep_string<cr>' . "" . expand('<cword>')
 nnoremap <expr> <leader>F ':Telescope find_files<cr>' . "" . expand('<cword>')
+
+nnoremap <leader>g :DiffviewOpen main<CR>

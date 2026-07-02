@@ -53,7 +53,10 @@
 				config = "${builtins.readFile ./../dotfiles/.config/nvim/nvim-tree.lua}";
 			}
 
-			YouCompleteMe
+			# YouCompleteMe
+
+            diffview-nvim
+            plenary-nvim # for diffview
 
 			{
 				plugin = telescope-nvim;
@@ -61,11 +64,12 @@
 				config = "${builtins.readFile ./../dotfiles/.config/nvim/telescope.lua}";
 			}
 			telescope-fzf-native-nvim
-			{
-				plugin = indent-blankline-nvim;
-				type = "lua";
-				config = "${builtins.readFile ./../dotfiles/.config/nvim/indent-blankline-nvim.lua}";
-			}
+            telescope-ui-select-nvim
+			# {
+			# 	plugin = indent-blankline-nvim;
+			# 	type = "lua";
+			# 	config = "${builtins.readFile ./../dotfiles/.config/nvim/indent-blankline-nvim.lua}";
+			# }
 
             # load treesitter and its syntax highlighting rules
 			{
@@ -87,6 +91,38 @@
             nvim-treesitter-parsers.cpp
             nvim-treesitter-parsers.comment
 
+
+            # lsp
+            mason-lspconfig-nvim
+            mason-tool-installer-nvim
+            {
+            	plugin = nvim-lspconfig;
+            	type = "lua";
+            	config = "${builtins.readFile ./../dotfiles/.config/nvim/lsp.lua}";
+            }
+
+            # autocomplete
+            {
+            	plugin = luasnip;
+            	type = "lua";
+            	config = "${builtins.readFile ./../dotfiles/.config/nvim/luasnip.lua}";
+            }
+            {
+            	plugin = blink-cmp;
+            	type = "lua";
+            	config = "${builtins.readFile ./../dotfiles/.config/nvim/blink.lua}";
+            }
+
+            # debug
+            {
+            	plugin = blink-cmp;
+            	type = "lua";
+            	config = "${builtins.readFile ./../dotfiles/.config/nvim/dap.lua}";
+            }
+            nvim-dap-ui
+            nvim-dap-python
+            nvim-nio
+            mason-nvim-dap-nvim
 
             # multiple colorschemes (the last one will be default)
             {

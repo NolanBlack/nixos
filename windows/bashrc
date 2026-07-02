@@ -1,0 +1,38 @@
+# WINDOWS bullshit
+function __fastgit_ps1 () {
+    branch=""
+ 
+    local headfile head branch
+    local dir="$PWD"
+ 
+    while [ -n "$dir" ]; do
+        if [ -e "$dir/.git/HEAD" ]; then
+            headfile="$dir/.git/HEAD"
+            break
+        fi
+        dir="${dir%/*}"
+    done
+ 
+    if [ -e "$headfile" ]; then
+        read -r head < "$headfile" || return
+        case "$head" in
+            ref:*) branch="${head##*/}" ;;
+            "") branch="" ;;
+            *) branch="${head:0:7}" ;;  #Detached head. You can change the format for this too.
+        esac
+    fi
+ 
+    if [ ! -z "$branch" ]; then
+        branch="($branch)"
+    fi
+ 
+    # Edit to suit your needs. Note the branch will be wrapped in parenthesis if it's set. Completely empty otherwise.
+    export PS1="\[\e]0;\W\a\]\n\[\e[32m\]\u@\H \[\e[33m\]\w\[\e[0m\] \[\033[36m\]$branch\[\033[0m\]\n\$ "
+	if [ -n "$VIRTUAL_ENV" ]; then
+		venv_name=$(basename "$VIRTUAL_ENV")
+		export PS1="($venv_name) $PS1"
+	fi
+}
+export PROMPT_COMMAND=__fastgit_ps1
+PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "`cygpath -w "$PWD" -C ANSI`"'
+# END windows bullshit

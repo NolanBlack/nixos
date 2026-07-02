@@ -12,5 +12,7 @@
         brave # chromium browser option
         #zoom-us # video conference
         protonvpn-gui
+        pyright # Installs pyright natively
+        nodejs               # Required dependency for pyright
     ];
 }

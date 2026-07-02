@@ -4,8 +4,58 @@ alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
-alias gl='git --no-pager log --oneline --all --decorate --graph'
-alias a='fc -s ; history -d -1'
+alias gl='git log --oneline --all --decorate --graph --color=always'
+
+function gd {
+	if [ -z "$1" ]; then
+		# if no argument is provided, set the argument to parent of the current branch
+		branch=$(git branch --show-current)
+		parent=$(git show-branch -a \
+				| sed "s/].*//" \
+				| grep "\*" \
+				| grep -v "$(git rev-parse --abbrev-ref HEAD)" \
+				| head -n1 \
+				| sed "s/^.*\[//")
+		if [ -z "$parent" ]; then
+			echo "No parent branch found for $branch. Please provide a branch or commit to compare against."
+			return
+		fi
+		# set the argument to the parent branch
+		set -- "$parent"
+		echo "Comparing '$branch' to '$parent'"
+		echo "Use gd '<branch>' or gd '<commit>' for more specific comparisons"
+	fi
+	files=$(git diff --name-only "$1")
+	# if files is empty, print a message and return
+	if [ -z "$files" ]; then
+		echo "No changes compared to $1"
+		return
+	fi
+	# if files has one file, show the diff for that file
+	if [ $(echo "$files" | wc -l) -eq 1 ]; then
+		git diff --color=always "$1"
+	else
+		echo "Select a file to compare against $1:"
+		# or allow select All
+		files=$(echo -e "All\n$files")
+
+		select file in $files; do
+			if [ "$file" = "All" ]; then
+				git diff --color=always "$1" | less -x4 -R
+				break
+			elif [ -n "$file" ]; then
+				git diff --color=always "$1" -- "$file" | less -x4 -R
+				break
+			else
+				# handle q to exit
+				if [ "$REPLY" = "q" ]; then
+					break
+				fi
+				echo "Invalid selection. Please try again."
+			fi
+		done
+	fi
+}
 
 
 zz() {
