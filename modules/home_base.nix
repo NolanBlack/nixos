@@ -96,6 +96,8 @@
             	type = "lua";
             	config = "${builtins.readFile ./../dotfiles/.config/nvim/luasnip.lua}";
             }
+            copilot-vim
+
             {
             	plugin = blink-cmp;
             	type = "lua";
