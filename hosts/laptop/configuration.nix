@@ -31,7 +31,7 @@
     # Enable OpenGL
     hardware.graphics = {
           enable = true;
-          enable32Bit = true;
+		# enable32Bit = true;
     };
 
     # Load nvidia driver for Xorg and Wayland
@@ -46,7 +46,7 @@
         powerManagement.enable = false;
         # Fine-grained power management. Turns off GPU when not in use.
         # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-        powerManagement.finegrained = false;
+		# powerManagement.finegrained = false;
 
         # Use the NVidia open source kernel module (not to be confused with the
         # independent third-party "nouveau" open source driver).
@@ -55,14 +55,14 @@
         # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
         # Only available from driver 515.43.04+
         # Do not disable this unless your GPU is unsupported or if you have a good reason to.
-        open = false;
+        open = true;
 
         # Enable the Nvidia settings menu,
         # accessible via `nvidia-settings`.
         nvidiaSettings = true;
 
         # Optionally, you may need to select the appropriate driver version for your specific GPU.
-        package = config.boot.kernelPackages.nvidiaPackages.stable;
+		# package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     };
 
