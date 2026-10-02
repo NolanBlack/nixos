@@ -9,7 +9,8 @@
         ".bashrc_aliases".source                    = ./../dotfiles/.bashrc_aliases;
 		".vimrc".source                             = ./../dotfiles/.vimrc;
 		".tmux.conf".source                         = ./../dotfiles/.tmux.conf;
-		".config/hypr/hyprland.conf".source         = ./../dotfiles/.config/hypr/hyprland.conf;
+		# ".config/hypr/hyprland.conf".source         = ./../dotfiles/.config/hypr/hyprland.conf;
+		".config/hypr/hyprland.lua".source         = ./../dotfiles/.config/hypr/hyprland.lua;
 		".config/waybar/config".source              = ./../dotfiles/.config/waybar/config;
 		".config/waybar/toggle_sink.sh".source      = ./../dotfiles/.config/waybar/toggle_sink.sh;
 		".config/waybar/style.css".source           = ./../dotfiles/.config/waybar/style.css;
