@@ -1,6 +1,8 @@
 { config, pkgs, lib, ... }:
 
 {
+
+    nixpkgs.config.allowUnfree = true;
 	home.file = {
         ".bashrc".source                            = ./../dotfiles/.bashrc;
         ".bash_profile".source                      = ./../dotfiles/.bash_profile;
@@ -96,7 +98,11 @@
             	type = "lua";
             	config = "${builtins.readFile ./../dotfiles/.config/nvim/luasnip.lua}";
             }
-            copilot-vim
+            {
+            	plugin = copilot-vim;
+            	type = "lua";
+            	config = "${builtins.readFile ./../dotfiles/.config/nvim/copilot.lua}";
+            }
 
             {
             	plugin = blink-cmp;
