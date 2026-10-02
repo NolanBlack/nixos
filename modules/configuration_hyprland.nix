@@ -10,7 +10,7 @@
     ];
     xdg.portal.xdgOpenUsePortal = true;
 
-    services.xserver.displayManager.gdm.wayland = true;
+    services.displayManager.gdm.wayland = true;
     programs.hyprland = {
         enable = true;
         # set the flake package
@@ -35,7 +35,7 @@
         pcmanfm # file manager
         dunst # notfications
         libnotify # for dunst
-        swww # wallpapers
+        awww # wallpapers
         kitty # term
         rofi # app launcher
         rofi-power-menu # power menu
