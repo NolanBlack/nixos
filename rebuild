@@ -9,7 +9,7 @@ source _set_flakename.sh || exit 1
 
 echo "updating flake ${FLAKE_NAME}"
 git add .
-sudo nixos-rebuild switch --flake ./#${FLAKE_NAME}
+sudo nixos-rebuild switch --no-reexec --flake ./#${FLAKE_NAME}
 gen=$(nixos-rebuild list-generations | grep current)
 git commit -am"flake $FLAKE_NAME: $gen"
 echo "running configure ${FLAKE_NAME}"

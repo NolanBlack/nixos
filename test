@@ -9,4 +9,4 @@ source _set_flakename.sh || exit 1
 
 echo "testing flake ${FLAKE_NAME}"
 git add .
-sudo nixos-rebuild test --flake ./#${FLAKE_NAME}
+sudo nixos-rebuild test --fast --flake ./#${FLAKE_NAME}
