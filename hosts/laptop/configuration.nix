@@ -113,7 +113,7 @@
         eigen
         libtorch-bin
         texliveFull
-        paraview
+        # paraview
     ];
 
 
