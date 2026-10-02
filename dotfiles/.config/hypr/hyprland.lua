@@ -149,10 +149,11 @@ hl.config({
 
 hl.config({
     group = {
-        -- col.border_active = rgba(595959aa)
         groupbar = {
-            col.active = "rgba(504945ee)",
-            col.inactive = "rgba(282828aa)",
+			col = {
+				active = "rgba(504945ee)",
+				inactive = "rgba(282828aa)",
+			},
             text_color = "rgba(ebdbb2ee)",
             font_size = 12,
             height = 18,
@@ -343,18 +344,10 @@ hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "Left", hl.dsp.group.move_window
 hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "Right", hl.dsp.group.move_window({ forward = true }))
 
 -- move windows
-
--- TODO: manual review (unknown dispatcher: movewindoworgroup)
--- hl.bind(mainMod .. " + " .. "Left", hl.dsp.movewindoworgroup("l"))
-
--- TODO: manual review (unknown dispatcher: movewindoworgroup)
--- hl.bind(mainMod .. " + " .. "Right", hl.dsp.movewindoworgroup("r"))
-
--- TODO: manual review (unknown dispatcher: movewindoworgroup)
--- hl.bind(mainMod .. " + " .. "Up", hl.dsp.movewindoworgroup("u"))
-
--- TODO: manual review (unknown dispatcher: movewindoworgroup)
--- hl.bind(mainMod .. " + " .. "Down", hl.dsp.movewindoworgroup("d"))
+hl.bind(mainMod .. " + " .. "Left", hl.dsp.window.move({direction = "left", group_aware = true}))
+hl.bind(mainMod .. " + " .. "Right", hl.dsp.window.move({direction = "right", group_aware = true}))
+hl.bind(mainMod .. " + " .. "Up", hl.dsp.window.move({direction = "up", group_aware = true}))
+hl.bind(mainMod .. " + " .. "Down", hl.dsp.window.move({direction = "down", group_aware = true}))
 
 -- Switch workspaces with mainMod + [0-9]
 
