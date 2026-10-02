@@ -10,7 +10,6 @@
     ];
     xdg.portal.xdgOpenUsePortal = true;
 
-    # services.displayManager.gdm.wayland = true; # no effect, false is not supported in GNOME 50
     programs.hyprland = {
         enable = true;
         # set the flake package
