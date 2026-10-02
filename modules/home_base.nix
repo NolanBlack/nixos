@@ -75,7 +75,18 @@
 
             # load treesitter and its syntax highlighting rules
 			{
-				plugin = nvim-treesitter.withAllGrammars;
+				plugin = (nvim-treesitter.withPlugins (p: [
+					p.tree-sitter-nix
+          			p.tree-sitter-vim
+          			p.tree-sitter-bash
+          			p.tree-sitter-lua
+          			p.tree-sitter-python
+          			p.tree-sitter-json
+                    # p.tree-sitter-c
+                    # p.tree-sitter-cpp
+          			p.tree-sitter-markdown
+          			p.tree-sitter-latex
+				]));
 				type = "lua";
 				config = "${builtins.readFile ./../dotfiles/.config/nvim/treesitter.lua}";
 			}

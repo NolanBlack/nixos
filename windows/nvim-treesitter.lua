@@ -1,9 +1,5 @@
 local parsers = { 'bash', 'c', 'cpp', 'python', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
 require('nvim-treesitter').install(parsers)
-require('nvim-treesitter.configs').setup {
-  -- Leave this empty or disable it so Neovim doesn't try to download/compile
-  ensure_installed = {}, 
-}
 
 local function treesitter_try_attach(buf, language)
   -- Check if a parser exists and load it
